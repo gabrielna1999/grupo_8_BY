@@ -1,6 +1,7 @@
 # grupo_8_BY
 
-Ecommerce para Broken Youth, emprendimiento de indumentaria. Venta de buzos y remeras con gráficas.
+Ecommerce para Broken Youth, emprendimiento de indumentaria. Venta de buzos y remeras con gráficas. 
+Apuntado a público joven, entre 18 y 30 años aproximadamente, con estilo urbano y moderno.
 
 Integrantes:
 
