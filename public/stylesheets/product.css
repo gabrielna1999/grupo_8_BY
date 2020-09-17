@@ -1,0 +1,98 @@
+.prod_img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#prod_main{
+    width: 100vw;
+       
+}
+
+#prod_sub{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.prod_sub{
+    width: 200px;
+}
+
+#prod_name{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 100px;
+    text-align: center;
+    padding-top: 60px;
+        
+}
+
+#prod_precio{    
+    text-align: center;
+}
+
+#info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#select_talle{
+    
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    margin: 80px;
+    font-size: 32px;
+    margin-bottom: 60px;
+}
+
+.elegir_talle{
+    display: flex;
+    width: 260px;
+    justify-content: space-between;
+}
+
+#talles{
+    display: flex;
+    font-size: 28px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.talles{
+    display: flex;
+    border: solid 4px white;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+#agregar_talle{    
+    border: solid 4px white;
+    padding: 15px 35px;
+    margin: 35px;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#descripcion{
+    margin: 30px;
+}
+
+#descrip_titulo{
+    border-bottom: solid 4px white;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#descrip_content{
+    font-size: 12px;
+}

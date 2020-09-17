@@ -1,0 +1,33 @@
+body{
+  background-color: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+header{
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  padding: 0px 25px;  
+}
+
+#menu_icon{
+  width: 60px;
+}
+
+#menu_logo{
+  width: 200px;
+}
+
+#menu_user{
+  width: 75px;
+}
+

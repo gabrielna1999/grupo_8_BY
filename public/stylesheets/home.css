@@ -1,0 +1,9 @@
+#home_img{
+    width: 100vw;
+}
+
+@media(max-width: 425px){
+    #home_img{
+        width: 425px;
+    }
+}
