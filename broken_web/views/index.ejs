@@ -2,20 +2,48 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/home.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />  
   </head>
   <body>
 
-    <header>
-      <div> <img class="header" id="menu_icon" src="images/icons/menu.png"> </div>
-      <div> <img class="header" id="menu_logo" src="images/logo.png"> </div>
-      <div> <img class="header" id="menu_user" src="images/icons/user.png"> </div>
-    </header>
+    <%- include('./partials/header.ejs')%>
 
     <main>
       <div> <img id="home_img" src="images/home_img.jpg"> </div>
     </main>
 
+    <div id = "destacados"> PRODUCTOS DESTACADOS </div>
+    <article class = "producto">
+      <div>
+        <img id = "imagen" src="images/producto/inheritance_main.png">
+      </div>
+      <div id = "modelo"><INHERITANCE></div>
+      <div id = "precio">$2000</div>
+    </article>
+
+    <article class = "producto">
+      <div>
+        <img id = "imagen" src="images/producto/illicit_main.jpg">
+      </div>
+      <div id = "modelo">ILLICIT</div>
+      <div id = "precio">$2500</div>
+    </article>
+
+    <article class = "producto">
+      <div>
+        <img id = "imagen" src="images/producto/inter_main.jpg">
+      </div>
+      <div id = "modelo">INTERFERENCIA <br> COMUNICATIVA</div>
+      <div id = "precio">$2200</div>
+    </article>
+    
+    <article class = "producto">
+      <div>
+        <img id = "imagen" src="images/producto/time_main.png">
+      </div>
+      <div id = "modelo">TIME IS $</div>
+      <div id = "precio">$2700</div>
+    </article>
+    
   </body>
 </html>

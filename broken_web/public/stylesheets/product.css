@@ -22,6 +22,7 @@
 
 #prod_name{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
     font-size: 100px;
     text-align: center;
     padding-top: 60px;
