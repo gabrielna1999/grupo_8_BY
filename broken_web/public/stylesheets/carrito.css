@@ -1,0 +1,102 @@
+h2{
+    text-align: center;
+    border-bottom: solid white thin;
+    padding-top: 80px;
+    font-size: 50px;
+    font-weight: unset;
+}
+
+.elproducto{
+    border-bottom: solid grey;
+}
+
+
+.producto{
+    width: 300px;
+    margin-left: 20px;
+    padding: 0px;
+}
+
+p{
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.cantidad{
+    display: flex;
+    align-items: center;
+}
+
+.numeros{
+    margin: 15px;
+}
+
+.botones{
+    margin: 10px;
+    padding: 10px;
+}
+
+button{
+    font-size: 50px;
+    border-radius: 20px;
+    width: 50px;
+    background-color: grey;
+
+}
+
+.dos{
+    font-size: 50px;
+    margin: 10px;
+    padding: 10px;
+    border-bottom: solid;
+}
+
+.bas{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.basura{
+    background-color: grey;
+    width: 50px;
+    border-radius: 25px;
+    margin-right: 50px;
+}
+
+.total{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+.ptotal{
+    font-size: 50px;
+}
+
+
+
+.cupon{
+    text-align-last: center;
+    margin-top: 25px;
+}
+
+.cuponB{
+    width: 90%;
+    border-radius: 10px;
+}
+
+.final{
+    display: flex;
+    place-content: space-between;
+    margin-top: 30px;
+}
+
+.divFinal{
+    text-align: center;
+    width: 50%;
+}
+
+.botonFinal{
+    width: 90%;
+}
+
