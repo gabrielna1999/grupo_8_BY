@@ -12,4 +12,9 @@ router.get("/carrito", function(req, res , next){
     res.render("carrito");
   });
 
+/* GET register page. */
+router.get("/register", function(req, res, next){
+  res.render("register");
+});
+
 module.exports = router;
