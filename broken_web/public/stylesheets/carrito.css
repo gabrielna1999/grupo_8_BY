@@ -1,25 +1,35 @@
 h2{
+    border-bottom: solid white 5px;
+    border-top: solid white 5px;
+    display: block;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
     text-align: center;
-    border-bottom: solid white thin;
-    padding-top: 80px;
-    font-size: 50px;
-    font-weight: unset;
-}
+    margin: 50px 0px 30px 0px;
+    font-weight: 500;
 
-.elproducto{
-    border-bottom: solid grey;
 }
-
 
 .producto{
+    border-bottom: solid grey;
+    padding: 0px 25px;
+}
+
+#modelo{
+    font-size: calc(1em + 3vw);
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.imagen{
     width: 300px;
-    margin-left: 20px;
     padding: 0px;
 }
 
 p{
-    font-size: 30px;
-    margin-left: 20px;
+    font-size: calc(1em + 1.5vw);
+    font-weight: 500;
 }
 
 .cantidad{
@@ -51,16 +61,20 @@ button{
     border-bottom: solid;
 }
 
-.bas{
+.titulo{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90vw;
+    margin: 0px;
 }
 
-.basura{
-    background-color: grey;
-    width: 50px;
-    border-radius: 25px;
-    margin-right: 50px;
+.trash_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100px;
 }
 
 .total{
