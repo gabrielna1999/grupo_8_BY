@@ -1,10 +1,18 @@
+html{
+  display: block;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+}
+
 body{
+  width: 100vw;
   background-color: black;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0px;
   margin: 0px;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   justify-content: center;
 }
@@ -45,6 +53,10 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
 }
 
 #top{
@@ -52,7 +64,8 @@ body{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
+  background-color: black;
   width: 100vw;
   height: 40px;
   padding: 0px;
@@ -116,11 +129,12 @@ body{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-bottom: solid 1px white;
+  border-bottom: solid 1px white;  
+  background-color: black;
 }
 
 #menu_logo_web{
-  width: 13vw;
+  width: 10vw;
 
 }
 
@@ -149,17 +163,41 @@ body{
   width: 100vw;
 }
 
+#carrusel{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.carrusel_img{
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+}
+
 
 /* Destacados */
 
+body section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
 #destacados{
-  border-bottom: solid white 5px;
-  border-top: solid white 5px;
+  border-bottom: solid white 2px;
+  border-top: solid white 2px;
   display: block;
+  width: 100vw;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 60px;
+  font-size: calc(1em + 3vw);
   text-align: center;
-  margin: 50px 0px 30px 0px;
+  margin: 100px 0px 30px 0px;
 }
 
 .producto{
@@ -169,7 +207,7 @@ body{
   justify-content: space-around;
   align-items: flex-start;
   align-self: center;
-  padding: 40px;
+  padding: 40px 0px;
 }
 
 a{
@@ -178,29 +216,31 @@ a{
 
 #imagen{
   width: 50vw;
+  
 }
 
 #imagen:hover{
   opacity: 60%;
-  transition-duration: 1s;
 }
 
 #modelo{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: calc(1em + 3vw);
+  font-size: calc(1em + 2vw);
   color: white;
   text-decoration: none;
   text-transform: capitalize;
   text-align: center;
-  padding: 8px 0px;
+  padding: 1vw 0px;
 }
 
 #precio{
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-size: 32px;
+  font-size: calc(1em + 0.3vw);
+  font-style: italic;
   color: white;
   text-decoration: none;
+  
 }
 
 footer{
@@ -216,8 +256,18 @@ footer{
 /* Responsive */
 
 @media (min-width: 700px){
+  body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
   #web_header{ 
       display: flex;
+      align-self: center;
+      padding: 0px;
+      width: 100vw;
+
   }
 
   #mobile_header{
@@ -227,6 +277,41 @@ footer{
   #home_img{
     display: none;
   }
+
+  #destacados{
+    font-size: calc(1em + 2vw);
+    
+  }
+
+  body section{
+    align-self: center;
+    display: flex;
+    width: 96vw;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .producto{
+    align-self: flex-start;
+  }
+
+  #imagen{
+    width: 18vw;
+  }
+
+  #modelo{
+    font-size: calc(1em + 1vw);
+    padding: 0.3vw 0px;
+  }
+
+  #precio{
+    font-size: calc(1em + 0.1vw);
+  }
+
+
+
 }
 
 @media (max-width: 700px){
@@ -236,6 +321,10 @@ footer{
 
   #mobile_header{
       display: flex;
+  }
+
+  #carrusel{
+    display: none;
   }
 
 }
