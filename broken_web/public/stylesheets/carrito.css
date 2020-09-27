@@ -5,14 +5,14 @@ h2{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 60px;
     text-align: center;
-    margin: 50px 0px 30px 0px;
+    margin: 50px 0px 0px 0px;
     font-weight: 500;
 
 }
 
 .producto{
     border-bottom: solid grey;
-    padding: 0px 25px;
+    padding: 20px 25px 0px 25px;
 }
 
 #modelo{
@@ -63,18 +63,22 @@ button{
 
 .titulo{
     display: flex;
+    align-self: center;
     flex-direction: row;
     justify-content: space-between;
-    width: 90vw;
+    align-items: center;
+    width: 100vw;
     margin: 0px;
+    padding: 0px;
 }
 
 .trash_icon{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 100px;
+    align-self: flex-end;
 }
 
 .total{

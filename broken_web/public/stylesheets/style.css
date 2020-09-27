@@ -11,27 +11,136 @@ body{
 
 /* Header */
 
-header{
+#mobile_header{
   background-color: black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 120px;
-  padding: 0px 25px;  
+  height: 10vw;
+  width: 98vw;
+  margin: 0px 2vw;
+  padding: 0px 0px;  
 }
 
 #menu_icon{
-  width: 60px;
+  width: 5vw;
+  padding: 0px 5px 0px 0px;
 }
 
 #menu_logo{
-  width: 200px;
+  width: 15vw;
 }
 
 #menu_user{
-  width: 75px;
+  width: 5vw;
+}
+
+/* Header Web */
+
+
+#web_header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#top{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 40px;
+  padding: 0px;
+  border-bottom: solid 1px white;
+}
+
+
+#login{
+  width: 41vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  justify-self: flex-start;
+}
+
+#login a{
+  color: white;
+  font-size: 0.6em;
+}
+
+#buscar{
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  background-color: #252525;
+  border-radius: 10px;
+  height: 20px;
+}
+
+#buscar input{
+  color: gray;
+  background: transparent;
+  border: none;
+}
+
+#buscar input:focus{
+  color: gray;
+  background: transparent;
+  border: transparent;
+  outline: none;  
+}
+
+#carrito{
+  width: 41vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  font-style: italic; 
+  font-size: 0.8em;
+}
+
+#logo_art{
+  display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px white;
+}
+
+#menu_logo_web{
+  width: 13vw;
+
+}
+
+#web_menu{    
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;    
+  padding: 10px 0px;
+  width: 100vw;
+  border-bottom: solid 1px white;
+}
+
+#web_menu a{
+  color: white;
+  padding: 0px 3vw;
+  opacity: 100%;
+  font-weight: 700;
+  font-size: 0.8em;
 }
 
 /* Main */
@@ -101,9 +210,35 @@ footer{
 
 
 
+
+
+
 /* Responsive */
 
-@media(max-width: 425px){
+@media (min-width: 700px){
+  #web_header{ 
+      display: flex;
+  }
+
+  #mobile_header{
+      display: none;
+  }
+  
+  #home_img{
+    display: none;
+  }
 }
+
+@media (max-width: 700px){
+  #web_header{ 
+      display: none;
+  }
+
+  #mobile_header{
+      display: flex;
+  }
+
+}
+
 
 
