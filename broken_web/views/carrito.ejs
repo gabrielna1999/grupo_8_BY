@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> s</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('./partials/head.ejs')%>    
+    <link rel='stylesheet' href='/stylesheets/product.css' />
     <link rel='stylesheet' href='/stylesheets/carrito.css' />
   </head>
     <body>
@@ -11,45 +11,42 @@
         <h2>TU CARRITO</h2>
 
         <main>
-            <section class="elproducto">
-                <p>REMERA ILLICIT</p>
-                <div class="bas"><img class= "basura" src="images/trash.png"></div>
+            <section class="producto">                
+                <div class="titulo"><p id = "modelo">ILLICIT</p><i id="trash_icon" class="fa fa-trash fa-lg"></i></div>
                 <div class="cantidad">
-                    <img class="producto" src="images/producto/illicit_main.jpg">
+                    <img class="imagen" src="/images/producto/illicit_main.jpg">
                     <div class="numeros"></div>
                     <div class="botones"><button type="text">-</button></div>
                     <div class="dos">2</div>
                     <div class="botones"><button type="text">+</button></div>
                 </div>
-                <p>Precio: $2500</p>
+                <p>$2500</p>
             </section>
             
 
-            <section class="elproducto">
-                <p>BUZO INHERITANCE</p>
-                <div class="bas"><img class= "basura"src="images/trash.png"></div>
+            <section class="producto">                
+                <div class="titulo"><p id = "modelo">INHERITANCE</p><img class= "basura" src="images/trash.png"></div>
                  <div class="cantidad">
-                    <img class="producto" src="images/producto/inheritance_main.png">
+                    <img class="imagen" src="/images/producto/inheritance_main.png">
                     <div class="numeros"></div>
                     <div class="botones"><button type="text">-</button></div>
                     <div class="dos">2</div>
                     <div class="botones"><button type="text">+</button></div>
                 </div>
-                <p>Precio: $2000</p>
+                <p>$2000</p>
             </section>
             
 
-            <section class="elproducto">
-                <p>BUZO TIME</p>
-                <div class="bas"><img class= "basura"src="images/trash.png"></div>
+            <section class ="producto">                
+                <div class="titulo"><p id = "modelo">TIME IS $</p><img class= "basura"src="images/trash.png"></div>
                 <div class="cantidad">
-                    <img class="producto" src="images/producto/time_main.png">
+                    <img class="imagen" src="/images/producto/time_main.png">
                     <div class="numeros"></div>
                     <div class="botones"><button type="text">-</button></div>
                     <div class="dos">2</div>
                     <div class="botones"><button type="text">+</button></div>
                 </div>
-                <p>Precio: $2700</p>
+                <p>$2700</p>
             </section>
 
             <div class="total">
