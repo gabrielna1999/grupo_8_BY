@@ -261,6 +261,10 @@ footer{
     flex-direction: column;
     justify-content: center;
   }
+
+  main{
+    width: 100%;
+  }
   
   #web_header{ 
       display: flex;
