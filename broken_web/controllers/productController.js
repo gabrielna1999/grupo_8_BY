@@ -5,7 +5,11 @@ const productController = {
 
     vistaCarrito: function(req, res,next){
     res.render("carrito", {title: 'Broken Youth'});
-    }, 
+    },
+    
+    cargaProduct: function(req, res , next){
+        res.render('cargaProduct', {title: 'Broken Youth'});
+    },
 
        
 }

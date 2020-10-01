@@ -4,4 +4,18 @@ const mainController = require('../controllers/mainController');
 
 router.get('/', mainController.index);
 
+router.get("/carrito", function(req, res , next){
+    res.render("carrito");
+  });
+
+/* GET register page. */
+router.get("/register", function(req, res, next){
+  res.render("register");
+});
+
+/* GET vistaproductos page. */
+router.get("/vistaproductos", function(req, res, next){
+  res.render("vistaproductos");
+});
+
 module.exports = router;
