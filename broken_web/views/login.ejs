@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./partials/head.ejs')%>
+    <link rel='stylesheet' href='/stylesheets/register.css' />
+  </head>
+
+    <body>
+        <%- include("./partials/header") %>
+
+
+        <form class="formulario">
+
+            <h1>INICIAR SESIÓN</h1>
+            <div class="contenedor">
+
+
+                <div class="input-contenedor">
+                    <i class="far fa-envelope icon"></i>
+                    <input type="text" placeholder="E-MAIL">   
+                </div>
+
+
+                <div class="input-contenedor">
+                    <i class="far fa-unlock-alt icon"></i>
+                    <input type="password" placeholder="CONTRASEÑA">   
+                </div>
+
+
+                <input type="submit" value="INICIAR SESIÓN" class="buttom">
+                <p> ¿Olvidaste tu contraseña?
+                </p>
+                <p>¿Aún no tienes una cuenta? <a class="link" href="register" >REGISTRARSE</a></p>
+
+            </div>
+        </form>
+
+        <%- include("./partials/footer") %>
+
+    </body>
+</html>

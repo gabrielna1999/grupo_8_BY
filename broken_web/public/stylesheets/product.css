@@ -12,25 +12,29 @@
 
 #prod_sub{
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    padding: 20px;
+    padding: 20px 0px;
+    width: 100vw;
 }
 
 .prod_sub{
-    width: 200px;
+    width: 22vw;
 }
 
 #prod_name{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-transform: uppercase;
-    font-size: 90px;
+    font-size: 15vw;
     text-align: center;
-    padding-top: 60px;
+    padding-top: 5vw;
         
 }
 
 #prod_precio{    
     text-align: center;
+    font-size: 5vw;
+    padding-top: 2vw;
 }
 
 #info{
@@ -47,21 +51,21 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 26px;
-    margin: 80px;
+    font-size: 5vw;
+    margin: 10vw;
     font-size: 32px;
-    margin-bottom: 60px;
+    margin-bottom: 5vw;
 }
 
 .elegir_talle{
     display: flex;
-    width: 260px;
+    width: 50vw;
     justify-content: space-between;
 }
 
 #talles{
     display: flex;
-    font-size: 28px;
+    font-size: 5vw;
     justify-content: center;
     align-items: center;
 
@@ -69,9 +73,10 @@
 
 .talles{
     display: flex;
-    border: solid 4px white;
-    width: 40px;
-    height: 40px;
+    border: solid 3px white;
+    font-size: 5vw;
+    width: 7vw;
+    height: 7vw;
     justify-content: center;
     align-items: center;
 }
@@ -89,11 +94,12 @@
 }
 
 #agregar_talle{    
-    border: solid 4px white;
-    padding: 15px 35px;
-    margin: 35px;
-    font-size: 36px;
+    border: solid 3px white;
+    padding: 3vw 5vw;
+    margin: 10vw;
+    font-size: 5vw;
     font-weight: bold;
+    margin-bottom: 6vw;
 }
 
 #agregar_talle:hover{
@@ -120,4 +126,121 @@
 
 #descrip_content{
     font-size: 12px;
+}
+
+@media(min-width: 700px){
+    main{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 220px;
+    }
+
+    #prod_img{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: flex-start;
+        align-self: flex-start;
+    }
+
+    #prod_main{
+        width: 28vw;
+    }
+
+    #prod_sub{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: right;
+        padding: 0px 1vw;
+        height: 28vw;
+        width: 6vw;
+    }
+
+    .prod_sub{
+        width: 6vw;
+    }
+
+    .prod_sub:hover{
+        border: solid 3px gray;
+        position: relative;
+    }
+
+    #info{
+        height: 28vw;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    #prod_name{
+        padding: 0px;
+        text-align: start;
+        font-size: calc(1em + 3vw);
+        align-self: flex-start;
+    }
+
+    #prod_precio{
+        font-size: calc(1.5vw);
+        text-align: left;
+        padding-top: 1vw;
+    }
+
+    #select_talle{
+        margin: 1vw 0px;
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 20vw;
+        height: 10vw;
+    }
+
+    .elegir_talle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 12vw;
+        align-self: flex-start;
+    }
+
+    .talles{
+        font-size: 1.5vw;
+        width: 2vw;
+        height: 2vw;
+    }
+
+    #talles{
+        font-size: 1vw;
+        display: inline-block;
+    }
+
+    
+
+    #agregar_talle{
+        font-size: 1vw;
+        padding: 1vw 20px;
+        margin: 1.5vw 0px;
+    }
+
+    #descripcion{
+        margin: 0px;
+        width: 40vw;
+    }
+
+    #descrip_titulo{
+        font-size: 1vw;
+        border-bottom: solid 0.2vw white;
+        
+    }
+
+    #descrip_content{
+        font-size: 1vw;
+    }
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./partials/head.ejs')%>
+    <link rel='stylesheet' href='/stylesheets/register.css' />
+    <link rel="stylesheet" href="/stylesheets/cargaproducto.css"/>
+  </head>
+
+    <body>
+    <%- include("./partials/header") %>
+
+
+        <main>
+            <div class="divder">
+                <div class="div1">
+                    <p class="datos">DATOS DEL PRODUCTO</p>
+                </div>
+                <div class="div2">
+                    <img src="/images/icons/Camara.png" class="img1">
+                </div>
+                <div class="div3">
+                    <img src="/images/icons/Camara.png">
+                    <img src="/images/icons/Camara.png">
+                    <img src="/images/icons/Camara.png">
+                </div>
+                <div class="div4">
+                    <input type="file">
+                </div>
+
+            </div>
+
+            <div class="divizq">
+                <form class="formulario">
+
+                    <div class="contenedor">
+        
+        
+                        <div class="input-contenedor">
+                            <i class="far fa-unlock-alt icon"></i>
+                            <input type="text" placeholder="PRODUCTO">   
+                        </div>
+
+        
+        
+                        <div class="input-contenedor">
+                            <i class="far fa-unlock-alt icon"></i>
+                            <input type="text" placeholder="MODELO">   
+                        </div>
+
+                        <div class="input-contenedor">
+                            <i class="far fa-unlock-alt icon"></i>
+                            <input type="text" placeholder="PRECIO">   
+                        </div>
+
+                        <div class="input-contenedor">
+                            <i class="far fa-unlock-alt icon"></i>
+                            <input type="text" placeholder="DESCRIPCION">   
+                        </div>
+                        <input type="submit" value="GUARDAR Y PUBLICAR" class="buttom">
+                    </div>
+            </div>
+        </main>
+
+        <%- include("./partials/footer") %>
+
+    </body>
+</html>

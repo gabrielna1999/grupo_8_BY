@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>REGISTER</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/product.css' />
+    <%- include('./partials/head.ejs')%>
     <link rel='stylesheet' href='/stylesheets/register.css' />
-
-
   </head>
 
 <body>
-
+    <%- include("./partials/header") %>
 
 
     <form class="formulario">
@@ -44,12 +40,14 @@
             </div>
 
             <input type="submit" value="REGISTRARSE" class="buttom">
-            <p>Al registrarse, acepta nuestras Condiciones de uso y
-                Política de privacidad.
+            <p>Al registrarse, acepta nuestras Condiciones de Uso y
+                Política de Privacidad.
             </p>
-            <p>¿Ya tienes una cuenta?<a class="link" href="login">INICIAR SESIÓN</a></p>
+            <p>¿Ya tienes una cuenta? <a class="link" href="login" >INICIAR SESIÓN</a></p>
 
         </div>
     </form>
+    
+    <%- include("./partials/footer") %>
 </body>
 </html>

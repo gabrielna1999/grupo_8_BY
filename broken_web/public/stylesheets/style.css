@@ -1,37 +1,160 @@
+html{
+  display: block;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+}
+
 body{
+  width: 100vw;
   background-color: black;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0px;
   margin: 0px;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   justify-content: center;
 }
 
 /* Header */
 
-header{
+#mobile_header{
   background-color: black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 120px;
-  padding: 0px 25px;  
+  height: 10vw;
+  width: 98vw;
+  margin: 0px 2vw;
+  padding: 0px 0px;  
 }
 
 #menu_icon{
-  width: 60px;
+  width: 5vw;
+  padding: 0px 5px 0px 0px;
 }
 
 #menu_logo{
-  width: 200px;
+  width: 15vw;
 }
 
 #menu_user{
-  width: 75px;
+  width: 5vw;
+}
+
+/* Header Web */
+
+
+#web_header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+}
+
+#top{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;  
+  background-color: black;
+  width: 100vw;
+  height: 40px;
+  padding: 0px;
+  border-bottom: solid 1px white;
+}
+
+
+#login{
+  width: 41vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  justify-self: flex-start;
+}
+
+#login a{
+  color: white;
+  font-size: 0.6em;
+}
+
+#buscar{
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  background-color: #252525;
+  border-radius: 10px;
+  height: 20px;
+}
+
+#buscar input{
+  color: gray;
+  background: transparent;
+  border: none;
+}
+
+#buscar input:focus{
+  color: gray;
+  background: transparent;
+  border: transparent;
+  outline: none;  
+}
+
+#carrito{
+  width: 41vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  font-style: italic; 
+  font-size: 0.8em;
+}
+
+#logo_art{
+  display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px white;  
+  background-color: black;
+}
+
+#menu_logo_web{
+  width: 10vw;
+
+}
+
+#web_menu{    
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;    
+  padding: 10px 0px;
+  width: 100vw;
+  border-bottom: solid 1px white;
+}
+
+#web_menu a{
+  color: white;
+  padding: 0px 3vw;
+  opacity: 100%;
+  font-weight: 700;
+  font-size: 0.8em;
 }
 
 /* Main */
@@ -40,17 +163,41 @@ header{
   width: 100vw;
 }
 
+#carrusel{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.carrusel_img{
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+}
+
 
 /* Destacados */
 
+body section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
 #destacados{
-  border-bottom: solid white 5px;
-  border-top: solid white 5px;
+  border-bottom: solid white 2px;
+  border-top: solid white 2px;
   display: block;
+  width: 100vw;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 60px;
+  font-size: calc(1em + 3vw);
   text-align: center;
-  margin: 50px 0px 30px 0px;
+  margin: 100px 0px 30px 0px;
 }
 
 .producto{
@@ -60,7 +207,7 @@ header{
   justify-content: space-around;
   align-items: flex-start;
   align-self: center;
-  padding: 40px;
+  padding: 40px 0px;
 }
 
 a{
@@ -69,41 +216,159 @@ a{
 
 #imagen{
   width: 50vw;
+  
 }
 
 #imagen:hover{
   opacity: 60%;
-  transition-duration: 1s;
 }
 
 #modelo{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: calc(1em + 3vw);
+  font-size: calc(1em + 2vw);
   color: white;
   text-decoration: none;
   text-transform: capitalize;
   text-align: center;
-  padding: 8px 0px;
+  padding: 1vw 0px;
 }
 
 #precio{
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-size: 32px;
+  font-size: calc(1em + 0.3vw);
+  font-style: italic;
   color: white;
   text-decoration: none;
+  
 }
 
+
+/* Footer */
 footer{
   background-color: #272727;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
+
+.instagram{
+  display: flex;
+  margin-left: 10px;
+}
+
+#insta_icon{
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+
+.instagramP{
+  align-self: center;
+  margin-left: 5px;
+}
+
+.segundo_div{
+  margin-left: 5%;
+}
+
+.tercer_div{
+  margin-right: 10px;
+}
+
+
+
+
+
 
 
 
 
 /* Responsive */
 
-@media(max-width: 425px){
+@media (min-width: 700px){
+  body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  main{
+    width: 100%;
+  }
+  
+  #web_header{ 
+      display: flex;
+      align-self: center;
+      padding: 0px;
+      width: 100vw;
+
+  }
+
+  #mobile_header{
+      display: none;
+  }
+  
+  #home_img{
+    display: none;
+  }
+
+  #destacados{
+    font-size: calc(1em + 2vw);
+    
+  }
+
+  body section{
+    align-self: center;
+    display: flex;
+    width: 96vw;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .producto{
+    align-self: flex-start;
+  }
+
+  #imagen{
+    width: 18vw;
+  }
+
+  #modelo{
+    font-size: calc(1em + 1vw);
+    padding: 0.3vw 0px;
+  }
+
+  #precio{
+    font-size: calc(1em + 0.1vw);
+  }
+
+
+
 }
+
+@media (max-width: 700px){
+  #web_header{ 
+      display: none;
+  }
+
+  #mobile_header{
+      display: flex;
+  }
+
+  #carrusel{
+    display: none;
+  }
+
+  footer{
+    display: none;
+  }
+
+}
+
 
 
