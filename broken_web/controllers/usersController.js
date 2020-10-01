@@ -6,7 +6,7 @@ const usersController = {
     },
 
     login: function(req,res,next) {
-        res.send("users", {title: 'Broken Youth'});
+        res.render("login", {title: 'Broken Youth'});
     },
 
     register: function(req, res, next){

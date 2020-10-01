@@ -243,9 +243,42 @@ a{
   
 }
 
+
+/* Footer */
 footer{
   background-color: #272727;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
+
+.instagram{
+  display: flex;
+  margin-left: 10px;
+}
+
+#insta_icon{
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+
+.instagramP{
+  align-self: center;
+  margin-left: 5px;
+}
+
+.segundo_div{
+  margin-left: 5%;
+}
+
+.tercer_div{
+  margin-right: 10px;
+}
+
+
 
 
 
@@ -324,6 +357,10 @@ footer{
   }
 
   #carrusel{
+    display: none;
+  }
+
+  footer{
     display: none;
   }
 
