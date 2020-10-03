@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VISTA DE PRODUCTOS</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/product.css' />
-    <link rel='stylesheet' href='/stylesheets/register.css' />
-    <link rel='stylesheet' href='/stylesheets/vistaproducto.css' />
+    <title>Broken Youth | Vista de Producto</title>    
+    <%- include('./partials/head.ejs')%>
+    <link rel='stylesheet' href='/stylesheets/vistaProductos.css' />
 
 
   </head>
@@ -13,17 +11,18 @@
   <body>
     <%- include('./partials/header.ejs')%>
     <section class="vista">
+      
       <div class="producto">
-        <img id = "imagen" src="images/producto/buzotimeismoneydetras1.jpg">
-      <section id="info">  
+        <img id = "imagen" src="/images/producto/buzotimeismoneydetras1.jpg">
+        <section id="info">  
           <div id="nombreproduc"> BUZO TIME IS MONEY</div>
           <div id="precioproduc">$2000</div>
-      </section>
+        </section>
       </div>
 
 
       <div class="producto">
-        <img id = "imagen" src="images/producto/buzolobodetras1.jpg">
+        <img id = "imagen" src="/images/producto/buzolobodetras1.jpg">
         <section id="info">   
               <div id="nombreproduc"> BUZO LOBO</div>
               <div id="precioproduc">$2000</div>
@@ -31,7 +30,7 @@
       </div>
       
       <div class="producto">
-        <img id = "imagen" src="images/producto/illicit_main.jpg">
+        <img id = "imagen" src="/images/producto/illicit_main.jpg">
         <section id="info">   
               <div id="nombreproduc"> REMERA ILLICIT</div>
               <div id="precioproduc">$2000</div>
@@ -39,23 +38,27 @@
       </div>
 
       <div class="producto">
-        <img id = "imagen" src="images/producto/juguitoremedetras2.jpg">
+        <img id = "imagen" src="/images/producto/juguitoremedetras2.jpg">
         <section id="info">   
               <div id="nombreproduc"> REMERA JUGUITO</div>
               <div id="precioproduc">$2000</div>
           </section>
       </div>
 
+    </section>
+
+    <section class="vista2">
+
       <div class="producto">
-        <img id = "imagen" src="images/producto/buzo2.jpeg">
+        <img id = "imagen" src="/images/producto/buzo2.jpeg">
         <section id="info">    
               <div id="nombreproduc"> BUZO BOY</div>
               <div id="precioproduc">$2000</div>
           </section>
       </div>
 
-      <div class="produtco">
-        <img id = "imagen" src="images/producto/buzo4.jpeg">
+      <div class="producto">
+        <img id = "imagen" src="/images/producto/buzo4.jpeg">
         <section id="info">   
               <div id="nombreproduc"> BUZO GRANDMA</div>
               <div id="precioproduc">$2000</div>
@@ -63,7 +66,7 @@
       </div>
 
       <div class="producto">
-        <img id = "imagen" src="images/producto/buzo1.jpeg">
+        <img id = "imagen" src="/images/producto/buzo1.jpeg">
         <section id="info">   
               <div id="nombreproduc"> BUZO OUTSIDER</div>
               <div id="precioproduc">$2000</div>
@@ -71,7 +74,7 @@
       </div>
 
       <div class="producto">
-        <img id = "imagen" src="images/producto/5.jpeg">
+        <img id = "imagen" src="/images/producto/5.jpeg">
         <section id="info">   
               <div id="nombreproduc"> BUZO DOMINANT</div>
               <div id="precioproduc">$2000</div>
@@ -80,6 +83,8 @@
 
 
     </section>
+
+    <%- include("./partials/footer") %>
 
   </body>
 

@@ -1,6 +1,6 @@
 const productController = {
     vistaDetalleProducto: function(req, res, next) {      
-    res.render('product', {title: 'Broken Youth'} );
+    res.render('detalleProducto', {title: 'Broken Youth'} );
     },   
 
     vistaCarrito: function(req, res,next){
@@ -8,8 +8,12 @@ const productController = {
     },
     
     cargaProduct: function(req, res , next){
-        res.render('cargaProduct', {title: 'Broken Youth'});
+        res.render('cargarProducto', {title: 'Broken Youth'});
     },
+
+    vistaProductos: function(req, res, next){
+        res.render("vistaProductos");
+    }
 
        
 }

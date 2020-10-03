@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Broken Youth | Carrito de Compras</title>
     <%- include('./partials/head.ejs')%>    
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/carrito.css' />
   </head>
     <body>
         <%- include('./partials/header.ejs')%>  
 
-        <h2>TU CARRITO</h2>
-
         <main>
+
+            <h2>TU CARRITO</h2>  
+
             <section class="producto">                
                 <div class="titulo"><p id = "modelo">ILLICIT</p><i id="trash_icon" class="fa fa-trash fa-lg"></i></div>
                 <div class="cantidad">
@@ -20,12 +21,12 @@
                     <div class="dos">2</div>
                     <div class="botones"><button type="text">+</button></div>
                 </div>
-                <p>$2500</p>
+                <p id="precio">$2500</p>
             </section>
             
 
             <section class="producto">                
-                <div class="titulo"><p id = "modelo">INHERITANCE</p><img class= "basura" src="images/trash.png"></div>
+                <div class="titulo"><p id = "modelo">INHERITANCE</p><i id="trash_icon" class="fa fa-trash fa-lg"></i></div>
                  <div class="cantidad">
                     <img class="imagen" src="/images/producto/inheritance_main.png">
                     <div class="numeros"></div>
@@ -33,12 +34,12 @@
                     <div class="dos">2</div>
                     <div class="botones"><button type="text">+</button></div>
                 </div>
-                <p>$2000</p>
+                <p id="precio">$2000</p>
             </section>
             
 
             <section class ="producto">                
-                <div class="titulo"><p id = "modelo">TIME IS $</p><img class= "basura"src="images/trash.png"></div>
+                <div class="titulo"><p id = "modelo">TIME IS $</p><i id="trash_icon" class="fa fa-trash fa-lg"></i></div>
                 <div class="cantidad">
                     <img class="imagen" src="/images/producto/time_main.png">
                     <div class="numeros"></div>
@@ -46,12 +47,12 @@
                     <div class="dos">2</div>
                     <div class="botones"><button type="text">+</button></div>
                 </div>
-                <p>$2700</p>
+                <p id="precio">$2700</p>
             </section>
 
             <div class="total">
-                <div class="ptotal">TOTAL</div>
-                <div class="ptotal"> $XXXXXXXX</div>
+                <div class="ptotal">TOTAL: &nbsp</div>
+                <div class="ptotal"> $XXXX</div>
             </div>
 
             <div class="cupon"><button type="text" class="cuponB">¿Tenes cupon de descuento?</button></div>
