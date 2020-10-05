@@ -13,8 +13,11 @@ const productController = {
 
     vistaProductos: function(req, res, next){
         res.render("vistaProductos");
-    }
+    },
 
+    edicionProductos: function(req, res, next){
+        res.render("edicionProductos");
+    },
        
 }
 
