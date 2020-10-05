@@ -2,16 +2,20 @@ body {
     background: black;
     background-size: cover;
     background-attachment: fixed;
+    min-height: 50vw;
 }
 
 .contenedor{
     width: 100%;
     padding: 15px;
+    margin-bottom: 6vw;
 }
 
 .formulario{
     background: rgb(2, 2, 2);
     margin: 0px;
+    margin-top: 240px;
+    margin-bottom: 200px;
     padding: 3px;
     display: flex;
     flex-direction: column;
@@ -21,8 +25,10 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 30px;
+    font-size: 3vw;
+    font-weight: 300;
     color: #fff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 input[type="text"],
@@ -77,11 +83,25 @@ p{
 
 }
 
-@media(min-width:768px){
+@media(min-width:700px){
     .formulario{
         margin: auto;
-        width: 500px;
-        margin-top: 150px;
+        width: 40vw;
+        margin-top: 190px;
         border-radius: 2%;
+    }
+}
+
+@media(max-width:700px){
+    .formulario{
+        margin: auto;
+        width: 80vw;
+        margin-top: 2vw;
+        border-radius: 2%;
+    }
+
+    h1{
+        font-size: 8vw;
+        margin: 3vw;
     }
 }

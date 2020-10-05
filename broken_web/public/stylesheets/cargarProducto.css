@@ -1,6 +1,7 @@
 main{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 .divder{
     margin-top: 21%;
@@ -16,6 +17,7 @@ main{
 }
 .datos{
     font-size: 20px;
+    font-weight: 600;
 }
 
 .div2{

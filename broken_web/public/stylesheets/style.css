@@ -17,6 +17,10 @@ body{
   justify-content: center;
 }
 
+main{
+  margin-bottom: 7vw;
+}
+
 /* Header */
 
 #mobile_header{
@@ -72,6 +76,13 @@ body{
   border-bottom: solid 1px white;
 }
 
+input[type="text"]{
+    font-size: 10px;
+    width: 82%;
+    padding: 10px;
+    border: none;
+}
+
 
 #login{
   width: 41vw;
@@ -119,6 +130,10 @@ body{
   color: white;
   font-style: italic; 
   font-size: 0.8em;
+}
+
+#carrito_icon{
+  color: white;
 }
 
 #logo_art{
@@ -245,13 +260,18 @@ a{
 
 
 /* Footer */
-footer{
+ footer{
   background-color: #272727;
   display: flex;
   justify-content: space-around;
-  bottom: 0;
-  position: fixed;
+  bottom: 0px;
+  position: relative;
   width: 100%;
+}
+
+footer p{
+  text-align: center;
+  font-size: 12px;
 }
 
 .instagram{
@@ -276,7 +296,7 @@ footer{
 
 .tercer_div{
   margin-right: 10px;
-}
+} 
 
 
 
