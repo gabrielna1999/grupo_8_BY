@@ -50,18 +50,20 @@
                 <p id="precio">$2700</p>
             </section>
 
-            <div class="total">
-                <div class="ptotal">TOTAL: &nbsp</div>
-                <div class="ptotal"> $XXXX</div>
-            </div>
 
-            <div class="cupon"><button type="text" class="cuponB">¿Tenes cupon de descuento?</button></div>
+            <section id="botones">   
+                <div class="total">
+                    <div class="ptotal">TOTAL: &nbsp</div>
+                    <div class="ptotal"> $XXXX</div>
+                </div>
 
-            <div class="final">
-                <div class="divFinal"><button type="text" class="botonFinal">CONTINUAR COMPRANDO</button></div>
-                <div class="divFinal"><button type="text" class="botonFinal">FINALIZAR COMPRA</button></div>
-            </div>
+                <div class="cupon"><input id="cuponB" name="cupon" placeholder="Agregar cupón..."></input></div>
 
+                <div class="final">
+                    <div class="divFinal"><button type="text" class="botonFinal">CONTINUAR COMPRANDO</button></div>
+                    <div class="divFinal"><button type="text" class="botonFinal">FINALIZAR COMPRA</button></div>
+                </div>
+            </section>
         </main>
         <%- include("./partials/footer") %>
   </body>
