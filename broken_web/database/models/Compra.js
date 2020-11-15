@@ -1,5 +1,5 @@
 module.exports= (sequelize,dataTypes) => {
-    const alias = "Imagenes";
+    const alias = "Compras";
 
     const cols = { 
         id: {
@@ -7,21 +7,21 @@ module.exports= (sequelize,dataTypes) => {
             primaryKey: true, 
             autoIncrement: true
         },
-        ruta: dataTypes.STRING, 
-        producto_id: {
+        fecha: dataTypes.DATE,
+        precio_total: dataTypes.INTEGER,
+        usuario_id: {
             type: dataTypes.INTEGER, 
             foreignKey: true
         },
     };
 
     const config= {
-        tableName: "imagenes",
+        tableName: "compras",
         timestamps: false,
     };
     
-    const Imagen = sequelize.define(alias, cols, config)
+    const Compra = sequelize.define(alias, cols, config); 
     
-    return Imagen;
-
+    return Compra;
        
 }

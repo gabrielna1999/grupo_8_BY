@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2020 at 02:44 PM
+-- Generation Time: Nov 15, 2020 at 04:14 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -71,20 +71,20 @@ CREATE TABLE `compras_productos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imagen`
+-- Table structure for table `imagenes`
 --
 
-CREATE TABLE `imagen` (
+CREATE TABLE `imagenes` (
   `id` int(11) NOT NULL,
   `ruta` varchar(255) NOT NULL,
   `producto_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `imagen`
+-- Dumping data for table `imagenes`
 --
 
-INSERT INTO `imagen` (`id`, `ruta`, `producto_id`) VALUES
+INSERT INTO `imagenes` (`id`, `ruta`, `producto_id`) VALUES
 (1, 'inheritance_main.png', 1),
 (2, 'time_main.png', 2),
 (3, 'inter_main.png', 3),
@@ -228,9 +228,9 @@ ALTER TABLE `compras_productos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `imagen`
+-- Indexes for table `imagenes`
 --
-ALTER TABLE `imagen`
+ALTER TABLE `imagenes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `producto_id_UNIQUE` (`producto_id`);
 
@@ -274,9 +274,9 @@ ALTER TABLE `productos`
 --
 
 --
--- Constraints for table `imagen`
+-- Constraints for table `imagenes`
 --
-ALTER TABLE `imagen`
+ALTER TABLE `imagenes`
   ADD CONSTRAINT `imagen_producto` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`);
 
 --
