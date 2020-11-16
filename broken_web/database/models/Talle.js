@@ -15,8 +15,23 @@ module.exports= (sequelize,dataTypes) => {
         timestamps: false,
     };
     
-    const Talles = sequelize.define(alias, cols, config)
+    const Talle = sequelize.define(alias, cols, config)
+
+    Talle.associate = function(models){
+        Talle.belongsToMany(models.Productos, {
+            as: 'productos',
+            through: 'producto_talle',
+            foreignKey: 'talle_id',
+            otherKey: 'producto_id',
+            timestamps: false
+        });
+
+        Talle.hasMany(models.ComprasProductos, {
+            foreignKey: 'talle_id',
+            as: 'compras'
+        })
+    }
     
-    return Talles;
+    return Talle;
        
 }

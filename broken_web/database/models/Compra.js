@@ -21,6 +21,18 @@ module.exports= (sequelize,dataTypes) => {
     };
     
     const Compra = sequelize.define(alias, cols, config); 
+
+    Compra.associate = function(models){
+        Compra.belongsTo(models.Usuarios, {
+            foreignKey: 'usuario_id',
+            as: 'usuario'
+        })
+
+        Compra.hasMany(models.ComprasProductos, {
+            foreignKey: 'compra_id',
+            as: 'compras'
+        })
+    }
     
     return Compra;
        
