@@ -30,7 +30,7 @@ module.exports= (sequelize,dataTypes) => {
 
         Compra.hasMany(models.ComprasProductos, {
             foreignKey: 'compra_id',
-            as: 'compras'
+            as: 'productosComprados'
         })
     }
     

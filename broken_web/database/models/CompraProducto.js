@@ -30,17 +30,17 @@ module.exports= (sequelize, dataTypes) => {
     const CompraProducto = sequelize.define(alias, cols, config);
 
     CompraProducto.associate = function(models){
-        CompraProducto.hasOne(models.Productos, {
+        CompraProducto.belongsTo(models.Productos, {
             as: 'producto',
             foreignKey: 'producto_id'
         });
 
-        CompraProducto.hasOne(models.Compras, {
+        CompraProducto.belongsTo(models.Compras, {
             as: 'compra',
             foreignKey: 'compra_id'
         });
 
-        CompraProducto.hasOne(models.Talles, {
+        CompraProducto.belongsTo(models.Talles, {
             as: 'talle',
             foreignKey: 'talle_id'
         })
