@@ -31,18 +31,22 @@ h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-input[type="text"],
-input[type="password"]{
+input{
     font-size: 10px;
-    width: 82%;
+    width: 100%;
     padding: 10px;
     border: none;
+}
+
+input:focus{
+    outline: none;
 }
 
 .input-contenedor{
     margin-bottom: 15px;
     border: 1px solid #aaa;
     background-color: #fff;
+    width: 100%;
 }
 
 .icon{

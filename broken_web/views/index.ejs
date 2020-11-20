@@ -3,6 +3,7 @@
   <head>
     <title>Broken Youth | Home</title>
     <%- include('./partials/head.ejs')%>     
+    <link rel='stylesheet' href='/stylesheets/vistaProductos.css' />    
   </head>
   <body>
     <%- include('./partials/header.ejs')%>
@@ -18,37 +19,17 @@
 
     <div id = "destacados"> PRODUCTOS DESTACADOS </div>
     <section>
-      <a href = "/product/detalleProducto" class = "producto">
-        <div>
-          <img id = "imagen" src="/images/producto/inheritance_main.jpg">
+      <% for (let i = 0; i < 4; i++){ %>
+        <div class="producto">
+          <a href="/product/detalleProducto/<%= productos[i].id %>">
+            <img id = "imagen" src="/images/producto/<%= productos[i].imagen.ruta %>">
+          </a>
+          <section id="info">  
+            <div id="nombreproduc"><%= productos[i].nombre %></div>
+            <div id="precioproduc">$<%= productos[i].precio %></div>
+          </section>
         </div>
-        <div id = "modelo">INHERITANCE</div>
-        <div id = "precio">$2000</div>
-      </a>
-
-      <a href = "/product/detalleProducto" class = "producto">
-        <div>
-          <img id = "imagen" src="/images/producto/illicit_main.jpg">
-        </div>
-        <div id = "modelo">ILLICIT</div>
-        <div id = "precio">$2500</div>
-      </a>
-
-      <a href = "/product/detalleProducto" class = "producto">
-        <div>
-          <img id = "imagen" src="/images/producto/inter_main.jpg">
-        </div>
-        <div id = "modelo">INTERFERENCIA <br> COMUNICATIVA</div>
-        <div id = "precio">$2200</div>
-      </a>
-      
-      <a href = "/product/detalleProducto" class = "producto">
-        <div>
-          <img id = "imagen" src="/images/producto/time_main.jpg">
-        </div>
-        <div id = "modelo">TIME IS $</div>
-        <div id = "precio">$2700</div>
-      </a>
+      <% } %>
     </section>
 
     <%- include("./partials/footer") %>

@@ -46,6 +46,26 @@ i{
     display: none;
 }
 
+select{
+    border: none;
+    height: 31.2px;
+    margin: 0px 6px;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+select:focus{
+    outline: none;
+}
+
+label{
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    padding: 10px
+}
+
 @media(max-width: 768px){
     .divder{
         margin-top: 30%;

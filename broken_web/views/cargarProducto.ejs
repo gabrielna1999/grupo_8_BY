@@ -24,38 +24,42 @@
                     <img src="/images/icons/Camara.png">
                     <img src="/images/icons/Camara.png">
                 </div>
-                <div class="div4">
-                    <input type="file">
-                </div>
+                
 
             </div>
 
             <div class="divizq">
-                <form class="formulario">
+                <form class="formulario" method="POST">
 
                     <div class="contenedor">
-        
-        
+                                
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="PRODUCTO">   
+                            <input type="text" placeholder="PRODUCTO" name="producto">   
                         </div>
 
-        
-        
-                        <div class="input-contenedor">
-                            <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="MODELO">   
-                        </div>
 
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="PRECIO">   
+                            <input type="text" placeholder="PRECIO" name="precio">   
                         </div>
 
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="DESCRIPCION">   
+                            <input type="text" placeholder="DESCRIPCIÓN" name="descripcion">   
+                        </div>                      
+        
+        
+                        <div class="input-contenedor">
+                            <!-- <i class="far fa-unlock-alt icon"></i> -->
+                            <label>CATEGORIA</label>
+                            <select name="categoria">
+                            <% for ( let i = 0; i < categorias.length; i++) { %>
+                                <option value="<%=categorias[i].id%>">
+                                    <%=categorias[i].id%>
+                                </option>
+                            <% } %>
+                            </select> 
                         </div>
                         <input type="submit" value="GUARDAR Y PUBLICAR" class="buttom">
                     </div>
