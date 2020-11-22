@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('session');
+var {check, validationResult, body} = require('express-validator');
+var session = require('express-session');
 
 
 var productRouter = require('./routes/product')
@@ -21,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: " Data Secret "}))
 
 app.use('/product', productRouter);
 app.use('/users', usersRouter);
