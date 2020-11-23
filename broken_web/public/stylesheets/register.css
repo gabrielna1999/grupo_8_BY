@@ -33,7 +33,8 @@ h1 {
 
 input{
     font-size: 10px;
-    width: 100%;
+    width: 96%;
+    color: grey;
     padding: 10px;
     border: none;
 }
@@ -55,7 +56,7 @@ input:focus{
     color: #999;
 }
 
-.buttom{
+.button{
     border: none;
     width: 100%;
     color: white;
@@ -66,7 +67,7 @@ input:focus{
 
 }
 
-.buttom:hover{
+.button:hover{
     background: rgb(105, 105, 105);
 }
 
