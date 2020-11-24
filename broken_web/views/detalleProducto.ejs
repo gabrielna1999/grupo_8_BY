@@ -14,17 +14,17 @@
         <section id="prod_img">
 
             <article>
-                <img id="prod_main" src="/images/producto/inheritance_main.png">
+                <img id="prod_main" src="/images/producto/<%= producto.imagen.ruta %>">
             </article>
 
-            <article id="prod_sub">
+            <!-- <article id="prod_sub">
 
                 <div> <img class="prod_sub" src="/images/producto/inheritance_sub1.png"> </div>
                 <div> <img class="prod_sub" src="/images/producto/inheritance_sub2.png"> </div>
                 <div> <img class="prod_sub" src="/images/producto/inheritance_sub3.png"> </div>
                 <div> <img class="prod_sub" src="/images/producto/inheritance_sub4.png"> </div>
 
-            </article>
+            </article> -->
 
         </section>
 
@@ -32,8 +32,8 @@
 
             <article>
 
-                <div id="prod_name"> Inheritance</div>
-                <div id="prod_precio">$2000</div>
+                <div id="prod_name"><%= producto.nombre %></div>
+                <div id="prod_precio">$<%= producto.precio %></div>
 
             </article>
 
@@ -52,8 +52,7 @@
             <article id="descripcion">
 
                 <div id="descrip_titulo">DESCRIPCIÓN</div>
-                <div id="descrip_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae similique facilis, voluptatibus eius laudantium ab est asperiores blanditiis alias minima suscipit et, voluptate nulla? Ad harum dolores deleniti officiis rerum?</div>
-    
+                <div id="descrip_content"><%= producto.descripcion %></div>
             </article>
 
         </section>

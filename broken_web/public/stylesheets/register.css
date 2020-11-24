@@ -31,18 +31,23 @@ h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-input[type="text"],
-input[type="password"]{
+input{
     font-size: 10px;
-    width: 82%;
+    width: 96%;
+    color: grey;
     padding: 10px;
     border: none;
+}
+
+input:focus{
+    outline: none;
 }
 
 .input-contenedor{
     margin-bottom: 15px;
     border: 1px solid #aaa;
     background-color: #fff;
+    width: 100%;
 }
 
 .icon{
@@ -51,7 +56,7 @@ input[type="password"]{
     color: #999;
 }
 
-.buttom{
+.button{
     border: none;
     width: 100%;
     color: white;
@@ -62,7 +67,7 @@ input[type="password"]{
 
 }
 
-.buttom:hover{
+.button:hover{
     background: rgb(105, 105, 105);
 }
 
