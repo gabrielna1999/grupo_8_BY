@@ -1,4 +1,5 @@
-var { check, validationResult, body} = require('express-validator');
+var { check, validationResult, body } = require('express-validator');
+var db = require('../database/models')
 
 const usersController = {    
 
@@ -12,9 +13,21 @@ const usersController = {
 
     registerPost: function (req, res, next){
         var errors = validationResult(req);
-
+        console.log(req.body)
+        
         if(errors.isEmpty()){
-            res.send('Logueado')
+            db.Usuarios.create({
+                nombre: req.body.nombre,
+                email: req.body.email,
+                password: req.body.password,
+                fecha_nacimiento: req.body.fecha                
+            })
+            .then(()=>{
+                res.render('login')                
+            })
+            .catch(e=>{
+                console.log(e)
+            })
             // res.redirect('/')
         }
         else{
