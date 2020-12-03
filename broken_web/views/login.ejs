@@ -10,26 +10,36 @@
         <%- include("./partials/header") %>
 
 
-        <form class="formulario" method="POST">
+        <form class="formulario" method="POST" action="login">
 
             <h1>INICIAR SESIÓN</h1>
             <div class="contenedor">
 
                 <div class="input-contenedor">
                     <!-- <i class="far fa-envelope icon"></i> -->
-                    <input type="text" placeholder="E-MAIL">   
+                    <input type="text" placeholder="E-MAIL" name="email">   
                 </div>
 
                 <div class="input-contenedor">
                     <!-- <i class="far fa-unlock-alt icon"></i> -->
-                    <input type="password" placeholder="CONTRASEÑA">   
+                    <input type="password" placeholder="CONTRASEÑA" name="password">   
                 </div>
+
+                <% if(typeof errors != 'undefined'){ %>
+                    <ul style="padding-left: 0%;">
+                        <% for(let i = 0; i < errors.length; i++){ %>
+                            <li style="list-style: none; padding-left: 0; font-size: 10px;">
+                                <%= errors[i].msg %>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% } %>
 
                 <input type="submit" value="INICIAR SESIÓN" class="button">
 
                 <p> ¿Olvidaste tu contraseña?
                 </p>
-                <p>¿Aún no tenés una cuenta? <a class="link" href="register" >REGISTRARSE</a></p>
+                <p>¿Aún no tenés una cuenta? <a class="link" href="register" >REGISTRATE</a></p>
 
             </div>
         </form>

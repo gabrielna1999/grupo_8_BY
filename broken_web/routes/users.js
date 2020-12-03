@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const usersController = require('../controllers/usersController');
-const registerCheckMiddleware = require('../middlewares/registerCheckMiddleware');
-const emailCheckMiddleware = require('../middlewares/emailCheckMiddleware');
-const passwordCheckMiddleware = require('../middlewares/passwordCheckMiddleware');
+const usersMiddleware = require('../middlewares/usersMiddleware');
 
 router.get("/register", usersController.register);
-router.post("/register", registerCheckMiddleware, emailCheckMiddleware, passwordCheckMiddleware, usersController.registerPost)
+router.post("/register", usersMiddleware.registerCheck, usersMiddleware.emailCheck, usersMiddleware.passwordCheck, usersController.processRegister)
 router.get("/login", usersController.login);
+router.post("/login", usersMiddleware.loginCheck, usersController.processLogin);
 
 module.exports = router;
