@@ -5,13 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var {check, validationResult, body} = require('express-validator');
 var session = require('express-session');
-var loginValidMiddleware = require('./middlewares/loginValidMiddleware');
+const usersMiddleware = require('./middlewares/usersMiddleware');
 
 
 var productRouter = require('./routes/product')
 var usersRouter = require('./routes/users');
 var indexRouter = require('./routes');
-const usersMiddleware = require('./middlewares/usersMiddleware');
 
 
 var app = express();

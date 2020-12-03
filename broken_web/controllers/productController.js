@@ -8,7 +8,7 @@ const productController = {
             nest: true
         })        
         .then(function(producto){                     
-            res.render("detalleProducto",{producto});                
+            res.render("detalleProducto",{producto, usuarioLogueado: req.session.usuarioLogueado});                
         })
         .catch(function(error){
             console.log(error);
@@ -17,13 +17,13 @@ const productController = {
     },   
 
     vistaCarrito: function(req, res,next){
-        res.render("carrito");
+        res.render("carrito", {usuarioLogueado: req.session.usuarioLogueado});
     },
     
     cargarProducto: function(req, res , next){
         db.Categorias.findAll()
             .then(function(categorias){
-                res.render('cargarProducto', {categorias:categorias});
+                res.render('cargarProducto', {categorias:categorias, usuarioLogueado: req.session.usuarioLogueado});
             })
         
     },
@@ -51,7 +51,7 @@ const productController = {
             nest: true
         })        
         .then(function(productos){                     
-            res.render("vistaProductos",{productos});                
+            res.render("vistaProductos",{productos, usuarioLogueado: req.session.usuarioLogueado});                
         })
         .catch(function(error){
             console.log(error);
@@ -59,7 +59,7 @@ const productController = {
     },
 
     editarProductos: function(req, res, next){
-        res.render("edicionProductos");
+        res.render("edicionProductos", {usuarioLogueado: req.session.usuarioLogueado});
     },
        
 }

@@ -6,7 +6,12 @@
     </section> 
     <section id = "web_header">
         <article id="top">
-            <div id="login"><a href = "/users/login">INICIAR SESION </a>&nbsp / &nbsp <a href="/users/register"> REGISTRARSE</a></div>
+            <% if(usuarioLogueado != undefined){ %>
+                <div id="login"><p id="usuario"><%= usuarioLogueado.nombre %></p>&nbsp / &nbsp<a href="/">CERRAR SESION</a></div>
+            <% } else{ %>
+                <div id="login"><a href = "/users/login">INICIAR SESION </a>&nbsp / &nbsp<a href="/users/register"> REGISTRARSE</a></div>
+            <% } %>
+
             <div id="buscar"><input type="text" placeholder="Buscar..."><i id ="lupa"class="fa fa-search" aria-hidden="true"></i></div>
             <a href = "/product/carrito"><div id="carrito"><i id="carrito_icon" class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>&nbsp 0 items</div></a>
         </article>

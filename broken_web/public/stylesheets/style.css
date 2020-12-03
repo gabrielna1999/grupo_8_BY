@@ -84,6 +84,13 @@ input[type="text"]{
     text-indent: 10px;
 }
 
+#usuario{
+  color: white;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 
 #login{
   width: 41vw;
