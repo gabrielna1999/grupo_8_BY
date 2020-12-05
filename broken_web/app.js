@@ -25,8 +25,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: " Data Secret "}));
-app.use(usersMiddleware.loginValid);
 
+// MIDDLEWARES 
+// Chequeo si hay un usuario logueado
+app.use(usersMiddleware.loginValid);
+// Guardo el usuario logueado con cookies
+app.use(usersMiddleware.recordame);
+// Chequeo si el usuario logueado es admin
+app.use(usersMiddleware.esAdmin);
+
+// RUTAS
 app.use('/product', productRouter);
 app.use('/users', usersRouter);
 app.use('/', indexRouter);
