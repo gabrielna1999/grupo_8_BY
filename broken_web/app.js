@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var {check, validationResult, body} = require('express-validator');
 var session = require('express-session');
+const usersMiddleware = require('./middlewares/usersMiddleware');
 
 
 var productRouter = require('./routes/product')
@@ -23,7 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: " Data Secret "}))
+app.use(session({secret: " Data Secret "}));
+app.use(usersMiddleware.loginValid);
 
 app.use('/product', productRouter);
 app.use('/users', usersRouter);
