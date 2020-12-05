@@ -7,6 +7,8 @@ router.get('/carrito', productController.vistaCarrito);
 router.get('/cargarProducto', productController.cargarProducto);
 router.post('/cargarProducto', productController.guardarProducto);
 router.get("/vistaProductos", productController.vistaProductos);
-router.get("/edicionProductos", productController.editarProductos); 
+router.get("/edicionProductos/:id", productController.editarProductos); 
+router.post("/edicionProductos/:id", productController.actualizar);
+router.post("/borrar/:id", productController.borrar);
 
 module.exports = router;

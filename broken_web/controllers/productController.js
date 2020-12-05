@@ -36,7 +36,7 @@ const productController = {
             categoria_id: req.body.categoria,
         })
         .then(function(){
-        res.redirect('/product/cargarProducto')
+        res.redirect('/product/vistaProductos')
         })
         .catch(function(error){
             console.log(error)
@@ -59,8 +59,42 @@ const productController = {
     },
 
     editarProductos: function(req, res, next){
-        res.render("edicionProductos");
+       let pedidoProductos = db.Productos.findByPk(req.params.id);
+       let pedidoCategorias = db.Categorias.findAll();
+
+       Promise.all([pedidoProductos, pedidoCategorias])
+        .then(function([productos, categorias]){
+            res.render("edicionProductos", {productos:productos, categorias:categorias});
+        })
     },
+
+    actualizar: function(req, res, next){
+        db.Productos.update({
+            nombre: req.body.producto,
+            precio: req.body.precio,
+            descripcion: req.body.descripcion,
+            categoria_id: req.body.categoria,
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+        res.redirect("/product/vistaProductos")
+
+
+
+    },
+
+    borrar: function(req, res){
+        db.Productos.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
+        res.redirect("/product/vistaProductos")
+    }
+
        
 }
 

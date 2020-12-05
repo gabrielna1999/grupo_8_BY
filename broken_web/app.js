@@ -10,7 +10,7 @@ var session = require('express-session');
 var productRouter = require('./routes/product')
 var usersRouter = require('./routes/users');
 var indexRouter = require('./routes');
-
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -28,6 +28,7 @@ app.use(session({secret: " Data Secret "}))
 app.use('/product', productRouter);
 app.use('/users', usersRouter);
 app.use('/', indexRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler

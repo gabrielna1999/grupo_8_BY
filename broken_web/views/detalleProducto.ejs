@@ -47,6 +47,7 @@
 
                 <div id="agregar_talle">AGREGAR</div>
                 
+                
             </article>
 
             <article id="descripcion">
@@ -54,6 +55,12 @@
                 <div id="descrip_titulo">DESCRIPCIÓN</div>
                 <div id="descrip_content"><%= producto.descripcion %></div>
             </article>
+
+            <a href="/product/edicionProductos/<%=producto.id%>"><button>EDITAR</button></a>
+
+            <form action="/product/borrar/<%=producto.id%>" method="POST">
+                <button type="submit">BORRAR</button>
+            </form>
 
         </section>
 
