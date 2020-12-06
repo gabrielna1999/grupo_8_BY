@@ -82,6 +82,14 @@ const usersController = {
         }
 
         
+    },
+
+    // Cerrar Sesion
+    cerrarSesion: function(req,res,next){
+        req.session.usuarioLogueado = undefined;
+        console.log("AAAAAAAAAAAAAAAAA " + req.session.usuarioLogueado)
+        res.redirect('/')
+
     }
 
     

@@ -4,25 +4,13 @@ var db = require('../database/models')
 const usersMiddleware = {
 
     // Validacion del formulario de login. Chequeo que el mail y contraseña sean correctos.
-    loginCheck: [
+    validacionLogin: [
         check('email').isEmail().withMessage("El email no es válido"),
         check('password').isLength({min:8}).withMessage("La contraseña es incorrecta")
-    ],    
-
-    // Chequeo si hay un usuario logueado
-    loginValid: function(req,res,next){
-        if(req.session.usuarioLogueado != undefined){
-            let usuarioLogueado = req.session.usuarioLogueado;
-            next()
-        }
-        else{
-            let usuarioLogueado = ""
-            next()
-        }
-    },
+    ], 
     
     // Validacion del formulario de register.
-    registerCheck: [
+    validacionRegister: [
         check('nombre').isLength({min: 1}).withMessage("Por favor ingresá tu nombre"),
         check('email').isEmail().withMessage("El email no es válido"),
         check('fecha').isDate().withMessage("Por favor ingresá tu fecha de nacimiento"), 
@@ -39,9 +27,9 @@ const usersMiddleware = {
         }), 
     
     ],
-
+  
     // Chequeo que el usuario que esta intentando registrarse no este poniendo un mail que ya esta en uso
-    emailCheck: [
+    estaRegistrado: [
 
         body('email').custom( value => {
             return db.Usuarios.findOne({
@@ -72,7 +60,7 @@ const usersMiddleware = {
     },
 
     // Bloqueo las vistas de register y login para usuarios ya logueados.
-    soloInvitados: function(req, res, next){
+    esInvitado: function(req, res, next){
         if(req.session.usuarioLogueado == undefined){
             next();
         }
@@ -81,20 +69,30 @@ const usersMiddleware = {
         }
     },
 
+    esUsuario: function(req, res, next){
+        if(req.session.usuarioLogueado != undefined){
+            next();
+        }
+        else{ 
+            res.redirect('/users/login');         
+            
+        }
+    },
+
     // Chequeo si el usuario logueado es admin
     esAdmin: function(req, res, next){
+        req.admin = false
         if(req.session.usuarioLogueado != undefined){
             db.Usuarios.findOne({
                 where: { email: req.session.usuarioLogueado.email}
             })
             .then(function(usuario){
                 if(usuario.admin){
-                    console.log("Admin");
-                    next()
+                    req.admin = true;
+                    next();
                 }
                 else{
-                    console.log("Invitadx");
-                    next();                    
+                    next()                   
                 }
                 
                 

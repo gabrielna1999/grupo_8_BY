@@ -27,8 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: " Data Secret "}));
 
 // MIDDLEWARES 
-// Chequeo si hay un usuario logueado
-app.use(usersMiddleware.loginValid);
 // Guardo el usuario logueado con cookies
 app.use(usersMiddleware.recordame);
 // Chequeo si el usuario logueado es admin

@@ -7,7 +7,7 @@
     <section id = "web_header">
         <article id="top">
             <% if(usuarioLogueado != undefined){ %>
-                <div id="login"><p id="usuario"><%= usuarioLogueado.nombre %></p>&nbsp / &nbsp<a href="/">CERRAR SESION</a></div>
+                <div id="login"><p id="usuario"><%= usuarioLogueado.nombre %></p>&nbsp / &nbsp<a href="/users/cerrarSesion">CERRAR SESION</a></div>
             <% } else{ %>
                 <div id="login"><a href = "/users/login">INICIAR SESION </a>&nbsp / &nbsp<a href="/users/register"> REGISTRARSE</a></div>
             <% } %>
