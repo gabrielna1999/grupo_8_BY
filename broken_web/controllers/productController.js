@@ -1,4 +1,4 @@
-const db = require('../database/models')
+const db = require('../database/models');
 
 const productController = {
     vistaDetalleProducto: function(req, res, next) {      
@@ -7,8 +7,8 @@ const productController = {
             raw: true,
             nest: true
         })        
-        .then(function(producto){                     
-            res.render("detalleProducto",{producto, usuarioLogueado: req.session.usuarioLogueado});                
+        .then(function(producto){                    
+            res.render("detalleProducto",{producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin});                
         })
         .catch(function(error){
             console.log(error);
@@ -21,11 +21,15 @@ const productController = {
     },
     
     cargarProducto: function(req, res , next){
-        db.Categorias.findAll()
+        if(req.admin == true){
+            db.Categorias.findAll()
             .then(function(categorias){
                 res.render('cargarProducto', {categorias:categorias, usuarioLogueado: req.session.usuarioLogueado});
             })
-        
+        }
+        else{
+            res.redirect('/')
+        }
     },
 
     guardarProducto: function(req, res, next) {
@@ -36,7 +40,7 @@ const productController = {
             categoria_id: req.body.categoria,
         })
         .then(function(){
-        res.redirect('/product/cargarProducto')
+        res.redirect('/product/vistaProductos')
         })
         .catch(function(error){
             console.log(error)
@@ -59,8 +63,47 @@ const productController = {
     },
 
     editarProductos: function(req, res, next){
-        res.render("edicionProductos", {usuarioLogueado: req.session.usuarioLogueado});
+       if(req.admin == true){
+            let pedidoProductos = db.Productos.findByPk(req.params.id);
+            let pedidoCategorias = db.Categorias.findAll();
+
+            Promise.all([pedidoProductos, pedidoCategorias])
+            .then(function([productos, categorias]){
+                res.render("edicionProductos", {productos:productos, categorias:categorias, usuarioLogueado: req.session.usuarioLogueado});
+            })
+        }
+        else{
+            res.redirect('/')
+        }
     },
+
+    actualizar: function(req, res, next){
+        db.Productos.update({
+            nombre: req.body.producto,
+            precio: req.body.precio,
+            descripcion: req.body.descripcion,
+            categoria_id: req.body.categoria,
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+        res.redirect("/product/vistaProductos")
+
+
+
+    },
+
+    borrar: function(req, res){
+        db.Productos.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
+        res.redirect("/product/vistaProductos")
+    }
+
        
 }
 

@@ -4,7 +4,7 @@
       <title>Broken Youth | Edicion de Producto</title>
     <%- include('./partials/head.ejs')%>
     <link rel='stylesheet' href='/stylesheets/register.css' />
-    <link rel="stylesheet" href="/stylesheets/edicionProductos.css"/>
+    <link rel="stylesheet" href="/stylesheets/cargarProducto.css"/>
   </head>
 
     <body>
@@ -31,34 +31,48 @@
             </div>
 
             <div class="divizq">
-                <form class="formulario">
+                <form class="formulario" action="/product/edicionProductos/<%=productos.id%>" method="POST">
 
                     <div class="contenedor">
         
         
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="PRODUCTO">   
+                            <input type="text" placeholder="PRODUCTO" value="<%=productos.nombre%>">   
                         </div>
 
-        
-        
-                        <div class="input-contenedor">
-                            <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="MODELO">   
-                        </div>
 
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="PRECIO">   
+                            <input type="text" placeholder="PRECIO" value="<%=productos.precio%>">   
                         </div>
 
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="DESCRIPCION">   
+                            <input type="text" placeholder="DESCRIPCION" value="<%=productos.descripcion%>">   
                         </div>
-                        <input type="submit" value="GUARDAR Y PUBLICAR" class="buttom">
+
+                        <div class="input-contenedor">
+                            <!-- <i class="far fa-unlock-alt icon"></i> -->
+                            <label>CATEGORIA</label>
+                            <select name="categoria">
+                            <% for ( let i = 0; i < categorias.length; i++) { %>
+                                <% if (categorias[i].id == productos.categoria_id) { %>
+                                    <option value="<%=categorias[i].id%>" selected>
+                                        <%=categorias[i].id%>
+                                    </option>
+
+                                <% } else %> 
+                                <option value="<%=categorias[i].id%>">
+                                    <%=categorias[i].id%>
+                                </option>
+                                
+                            <% } %>
+                            </select> 
+                        </div>
+                        <input type="submit" value="Editar" class="buttom">
                     </div>
+                </form>
             </div>
         </main>
 

@@ -11,7 +11,7 @@ const usersMiddleware = require('./middlewares/usersMiddleware');
 var productRouter = require('./routes/product')
 var usersRouter = require('./routes/users');
 var indexRouter = require('./routes');
-
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -25,11 +25,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: " Data Secret "}));
-app.use(usersMiddleware.loginValid);
 
+// MIDDLEWARES 
+// Guardo el usuario logueado con cookies
+app.use(usersMiddleware.recordame);
+// Chequeo si el usuario logueado es admin
+app.use(usersMiddleware.esAdmin);
+
+// RUTAS
 app.use('/product', productRouter);
 app.use('/users', usersRouter);
 app.use('/', indexRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler
