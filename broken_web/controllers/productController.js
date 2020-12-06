@@ -88,8 +88,9 @@ const productController = {
                 id: req.params.id
             }
         })
-
+        .then(function(){
         res.redirect("/product/vistaProductos")
+        })
 
 
 
@@ -101,7 +102,7 @@ const productController = {
                 id: req.params.id
             }
         })
-        res.redirect("/product/vistaProductos")
+        res.redirect("/product/vistaproductos")
     }
 
        

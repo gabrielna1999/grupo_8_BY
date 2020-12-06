@@ -8,8 +8,8 @@ const cartController = {
             raw: true,
             nest: true
         })
-        .then(function(productos){                     
-            res.render("carrito",{productos, usuarioLogueado: req.session.usuarioLogueado});                
+        .then(function(producto){                     
+            res.render("carrito",{producto:producto, usuarioLogueado: req.session.usuarioLogueado});                
         })
         .catch(function(error){
             console.log(error);
