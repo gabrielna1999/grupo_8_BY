@@ -3,7 +3,7 @@ const db = require('../database/models');
 const productController = {
     vistaDetalleProducto: function(req, res, next) {      
         db.Productos.findByPk(req.params.id, {
-            include: [{ all: true, nested: true}],
+            include: [{association: 'imagen'}],
             raw: true,
             nest: true
         })        
@@ -17,14 +17,44 @@ const productController = {
     },   
 
     vistaCarrito: function(req, res,next){
-        db.Compras.findOne({ include: ['comprasProductos'], where: { usuario_id: req.session.id, finalizada: 0}})
+        // Busco si el usuario logueado tiene una compra iniciada
+        db.Compras.findOne({ include: ['comprasProductos'], where: { usuario_id: req.session.usuarioLogueado.id, finalizada: 0}})
         .then(function(compraEncontrada){
+            // Si no la tiene, devuelvo el carrito vacio
             if(compraEncontrada == undefined){
                 res.send("Carrito vacio")
             }
-            else{                
-                res.render("carrito", {usuarioLogueado: req.session.usuarioLogueado, compraEncontrada});
+            // Si la tiene, devuelvo el carrito con todos los productos que contiene:
+            else{      
+                // Creo un array 'carrito' que va a contener todos los productos          
+                var carrito = []
+                // Traigo todos los productos asociados a esta compra a traves de la tabla intermedia 'compras_productos'
+                db.ComprasProductos.findAll({ 
+                    include: {association: 'producto'},
+                    where: { compra_id: compraEncontrada.id }
+                })
+                // Por cada 'compra_producto' encontrado, busco la informacion del producto que corresponde y lo agrego al carrito
+                .then(compraProductosEncontrados => {
+                    compraProductosEncontrados.forEach(compraProducto => {
+                        console.log("ESTE ES UN PRODUCTO: " + compraProducto.producto.nombre)
+                        carrito.push(compraProducto.producto)
+                    });
+                    
+                    carrito.forEach(producto => {
+                        console.log("UN PRODUCTO EN EL CARRITO: " + producto.nombre)
+                    });
+
+                    // Renderizo el carrito pasandole el array de productos asociados a la compra
+                    res.render("carrito", {carrito, usuarioLogueado: req.session.usuarioLogueado});
+                })
+                .catch(function(error){
+                    console.log(error);
+                })
+                
             }
+        })
+        .catch(function(error){
+            console.log(error);
         })
     },
     

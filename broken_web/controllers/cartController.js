@@ -15,7 +15,7 @@ const cartController = {
                     compra_id: compraEncontrada.id,
                     cantidad: 0,
                     talle: 0
-                })                
+                })               
                 res.redirect('/product/vistaProductos') 
             }
             else{
@@ -34,28 +34,18 @@ const cartController = {
                     compra_id: compraCreada.id,
                     cantidad: 0,
                     talle: 0
-                    })
+                    })                    
+                    res.redirect('/product/vistaProductos') 
                 })               
-                res.redirect('/product/vistaProductos') 
+                .catch( e => { console.log(e) } )
                     
                 })
                    
             }
 
         }) 
-        /*
-        if(no hay una compra){
-            crea la compra
-        }
-        else{
-            if(la compra esta finalizada){
-                crea otra compra
-            }
-            else{                
-                agrega el producto a la compra
-            }
-        } 
-        */
+        .catch( e => { console.log(e) } )
+        
         
     },
 
