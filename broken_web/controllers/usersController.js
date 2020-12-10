@@ -1,5 +1,6 @@
 var { check, validationResult, body } = require('express-validator');
-var db = require('../database/models')
+var db = require('../database/models');
+const bcrypt = require('bcrypt');
 
 const usersController = {    
 
@@ -25,7 +26,7 @@ const usersController = {
                 // Si encuentro un usuario que coincida, comparo las contrasenas
                 else{
                     // Si la contrasena es correcta guardo al usuario en session
-                    if(usuario.password == req.body.password){
+                    if(bcrypt.compareSync(req.body.password, usuario.password)){
                         req.session.usuarioLogueado = usuario;
                         console.log(req.session.usuarioLogueado.email)
 
@@ -61,12 +62,13 @@ const usersController = {
     // POST register
     processRegister: function (req, res, next){
         var errors = validationResult(req);
+        var passwordCrypt = bcrypt.hashSync(req.body.password, 10);        
         
         if(errors.isEmpty()){
             db.Usuarios.create({
                 nombre: req.body.nombre,
                 email: req.body.email,
-                password: req.body.password,
+                password: passwordCrypt,
                 fecha_nacimiento: req.body.fecha                
             })
             .then(()=>{

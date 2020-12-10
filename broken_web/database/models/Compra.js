@@ -7,12 +7,14 @@ module.exports= (sequelize,dataTypes) => {
             primaryKey: true, 
             autoIncrement: true
         },
-        fecha: dataTypes.DATE,
+        fecha_inicio: dataTypes.DATE,
         precio_total: dataTypes.INTEGER,
         usuario_id: {
             type: dataTypes.INTEGER, 
             foreignKey: true
         },
+        finalizada: dataTypes.BOOLEAN,
+        fecha_finalizacion: dataTypes.DATE,
     };
 
     const config= {
@@ -25,12 +27,12 @@ module.exports= (sequelize,dataTypes) => {
     Compra.associate = function(models){
         Compra.belongsTo(models.Usuarios, {
             foreignKey: 'usuario_id',
-            as: 'usuario'
+            as: 'compra'
         })
 
         Compra.hasMany(models.ComprasProductos, {
             foreignKey: 'compra_id',
-            as: 'productosComprados'
+            as: 'comprasProductos'
         })
     }
     

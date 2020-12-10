@@ -3,11 +3,11 @@ const db = require('../database/models');
 const productController = {
     vistaDetalleProducto: function(req, res, next) {      
         db.Productos.findByPk(req.params.id, {
-            include: [{association: 'imagen'}],
+            include: [{ all: true, nested: true}],
             raw: true,
             nest: true
         })        
-        .then(function(producto){                    
+        .then(function(producto){            
             res.render("detalleProducto",{producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin});                
         })
         .catch(function(error){
@@ -17,7 +17,15 @@ const productController = {
     },   
 
     vistaCarrito: function(req, res,next){
-        res.render("carrito", {usuarioLogueado: req.session.usuarioLogueado});
+        db.Compras.findOne({ include: ['comprasProductos'], where: { usuario_id: req.session.id, finalizada: 0}})
+        .then(function(compraEncontrada){
+            if(compraEncontrada == undefined){
+                res.send("Carrito vacio")
+            }
+            else{                
+                res.render("carrito", {usuarioLogueado: req.session.usuarioLogueado, compraEncontrada});
+            }
+        })
     },
     
     cargarProducto: function(req, res , next){
@@ -54,7 +62,7 @@ const productController = {
             raw: true,
             nest: true
         })        
-        .then(function(productos){                     
+        .then(function(productos){                    
             res.render("vistaProductos",{productos, usuarioLogueado: req.session.usuarioLogueado});                
         })
         .catch(function(error){

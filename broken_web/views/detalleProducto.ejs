@@ -34,6 +34,7 @@
 
                 <div id="prod_name"><%= producto.nombre %></div>
                 <div id="prod_precio">$<%= producto.precio %></div>
+                
 
             </article>
 
@@ -45,7 +46,7 @@
                     <div class="talles">2</div>
                 </div>
 
-                <a href="/product/carrito"><bottom id="agregar_talle">AGREGAR</bottom></a>
+                <a href="/product/agregarProducto/<%= producto.id %>"><bottom id="agregar_talle">AGREGAR</bottom></a>
                 
                 
             </article>
