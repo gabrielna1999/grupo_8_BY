@@ -10,6 +10,7 @@ module.exports = (sequelize, dataTypes) => {
         precio: dataTypes.INTEGER,
         descripcion: dataTypes.STRING,
         categoria_id: {type: dataTypes.INTEGER, foreignKey: true},
+        imagen_ruta: dataTypes.STRING,
     };
     const config= {
         tableName: "productos",
@@ -37,6 +38,11 @@ module.exports = (sequelize, dataTypes) => {
             timestamps: false
         })
 
+        Producto.hasMany(models.ProductosTalles, {
+            foreignKey: 'producto_id',
+            as: 'productoTalle'
+        })
+
         Producto.hasMany(models.ComprasProductos, {
             foreignKey: 'producto_id',
             as: 'compraProducto'
@@ -46,7 +52,7 @@ module.exports = (sequelize, dataTypes) => {
             as: 'compras',
             through: 'compras_productos',
             foreignKey: 'producto_id',
-            otherKey: 'compras_id',
+            otherKey: 'compra_id',
             timestamps: false
         })
 

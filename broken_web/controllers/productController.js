@@ -3,12 +3,12 @@ const db = require('../database/models');
 const productController = {
     vistaDetalleProducto: function(req, res, next) {      
         db.Productos.findByPk(req.params.id, {
-            include: [{association: 'imagen'}],
-            raw: true,
-            nest: true
+            include: { all: true }
+
         })        
-        .then(function(producto){            
-            res.render("detalleProducto",{producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin});                
+        .then(function(producto){
+            console.log(producto.talles)               
+            res.render("detalleProducto", {producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin});                
         })
         .catch(function(error){
             console.log(error);

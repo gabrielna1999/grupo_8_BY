@@ -34,6 +34,7 @@ module.exports= (sequelize, dataTypes) => {
             as: 'talle',
             foreignKey: 'talle_id'
         })
+
     };
     
 

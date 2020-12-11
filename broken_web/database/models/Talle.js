@@ -31,6 +31,11 @@ module.exports= (sequelize,dataTypes) => {
             as: 'compras'
         })
 
+        Talle.hasMany(models.ProductosTalles, {
+            foreignKey: 'talle_id',
+            as: 'productoTalle'
+        })
+
         
     }
     
