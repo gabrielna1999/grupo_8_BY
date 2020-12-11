@@ -6,8 +6,7 @@ const productController = {
             include: { all: true }
 
         })        
-        .then(function(producto){
-            console.log(producto.talles)               
+        .then(function(producto){          
             res.render("detalleProducto", {producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin});                
         })
         .catch(function(error){
@@ -22,7 +21,7 @@ const productController = {
         .then(function(compraEncontrada){
             // Si no la tiene, devuelvo el carrito vacio
             if(compraEncontrada == undefined){
-                res.send("Carrito vacio")
+                res.render("carrito", {carrito: undefined, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada});
             }
             // Si la tiene, devuelvo el carrito con todos los productos que contiene:
             else{      
@@ -36,16 +35,13 @@ const productController = {
                 // Por cada 'compra_producto' encontrado, busco la informacion del producto que corresponde y lo agrego al carrito
                 .then(compraProductosEncontrados => {
                     compraProductosEncontrados.forEach(compraProducto => {
-                        console.log("ESTE ES UN PRODUCTO: " + compraProducto.producto.nombre)
+                        compraProducto.producto.talle = compraProducto.talle_id;
+                        compraProducto.producto.cantidad = compraProducto.cantidad;
                         carrito.push(compraProducto.producto)
-                    });
-                    
-                    carrito.forEach(producto => {
-                        console.log("UN PRODUCTO EN EL CARRITO: " + producto.nombre)
                     });
 
                     // Renderizo el carrito pasandole el array de productos asociados a la compra
-                    res.render("carrito", {carrito, usuarioLogueado: req.session.usuarioLogueado});
+                    res.render("carrito", {carrito, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada});
                 })
                 .catch(function(error){
                     console.log(error);

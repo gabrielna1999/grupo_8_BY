@@ -28,7 +28,6 @@ const usersController = {
                     // Si la contrasena es correcta guardo al usuario en session
                     if(bcrypt.compareSync(req.body.password, usuario.password)){
                         req.session.usuarioLogueado = usuario;
-                        console.log(req.session.usuarioLogueado.email)
 
                         // Si clickeo el boton de recordame, guardo al usuario en cookie tambien
                         if(req.body.recordame != undefined){
@@ -89,7 +88,6 @@ const usersController = {
     // Cerrar Sesion
     cerrarSesion: function(req,res,next){
         req.session.usuarioLogueado = undefined;
-        console.log("AAAAAAAAAAAAAAAAA " + req.session.usuarioLogueado)
         res.redirect('/')
 
     }

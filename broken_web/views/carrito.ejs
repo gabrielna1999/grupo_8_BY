@@ -10,35 +10,51 @@
 
         <main>
 
-            <h2>TU CARRITO</h2>  
+            <h2>TU CARRITO</h2> 
+            
+            <% if(carrito == undefined){ %>
+                <h3 style="color: white; text-align: center; margin-top: 50px"> NO HAY PRODUCTOS EN TU CARRITO </h3>
+            <% } %>
 
-            <% carrito.forEach(producto => { %>
+            <% if(carrito != undefined){ carrito.forEach(producto => { %>
                 <section class="producto">                
-                    <div class="titulo"><p id = "modelo"><%= producto.nombre %></p><i id="trash_icon" class="fa fa-trash fa-lg"></i></div>
+                    <div class="titulo"><p id = "modelo"><%= producto.nombre %></p><a href="/product/sacarDelCarrito/<%= producto.id %>"><i id="trash_icon" class="fa fa-trash fa-lg" style="color: white;"></i></a></div>
                     <div class="cantidad">
-                        <img class="imagen" src="/images/producto/<%= producto.imagen_ruta %>">
-                        <div class="numeros"></div>
-                        <div class="botones"><button type="text">-</button></div>
-                        <div class="dos">2</div>
-                        <div class="botones"><button type="text">+</button></div>
+                        <img class="imagen" src="/images/producto/<%= producto.imagen_ruta %>">                        
+                        <!-- <div class="botones"><button type="text">-</button></div>
+                        <div class="dos"><%= producto.cantidad %></div>
+                        <div class="botones"><button type="text">+</button></div> -->
                     </div>
-                    <p id="precio"><%= producto.precio %></p>
+                    <p id="talle"> talle <%= producto.talle %></p>
+                    <p id="talle"> cantidad <%= producto.cantidad %></p>
+                    <p id="precio">$<%= producto.precio %></p>
                 </section>
-            <% }) %>          
+            <% }) } %>          
 
                      
-            <section id="botones">   
+            <section id="botones" style="margin-top: 100px">   
+                <% if(compra != undefined){ %>
                 <div class="total">
-                    <div class="ptotal">TOTAL: &nbsp</div>
-                    <div class="ptotal"> $XXXX</div>
+                    <div class="ptotal">TOTAL: &nbsp $<%= compra.precio_total %></div>
                 </div>
 
                 <div class="cupon"><input id="cuponB" name="cupon" placeholder="Agregar cupón..."></input></div>
 
                 <div class="final">
-                    <div class="divFinal"><button type="text" class="botonFinal">CONTINUAR COMPRANDO</button></div>
-                    <div class="divFinal"><button type="text" class="botonFinal">FINALIZAR COMPRA</button></div>
+                    <a href="/product/vistaProductos" class="divFinal"><button type="text" class="botonFinal">CONTINUAR COMPRANDO</button></a>
+                    <a href="/product/finalizarCompra" class="divFinal"><button type="text" class="botonFinal">FINALIZAR COMPRA</button></a>
                 </div>
+
+                <% } %>
+
+                <% if(compra == undefined){ %>
+
+                    <a href="/product/vistaProductos" style="justify-self: center; align-self: center;"><button type="text" class="botonFinal">CONTINUAR COMPRANDO</button></a>
+
+                <% } %>
+                
+
+                
             </section>
         </main>
         <%- include("./partials/footer") %>
