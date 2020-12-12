@@ -98,14 +98,17 @@ const cartController = {
     },
 
     finalizarCompra: function(req, res, next){
-        db.Compras.update({
-            finalizada: 1,
-            fecha_finalizacion: new Date()
-        },{
+        db.Compras.findOne({
+            include: {association: 'productos', association: 'comprasProductos'},
             where: {usuario_id: req.session.usuarioLogueado.id, finalizada: 0},
         })
-        .then(()=>{
-            res.send('Compra finalizada!')
+        .then((compra)=>{
+            compra.update({
+                finalizada: 1,
+                fecha_finalizacion: new Date()
+            })
+            console.log(compra)
+            res.render('compraFinalizada', {usuarioLogueado: req.session.usuarioLogueado, compra, cantidadDeItems: req.session.cantidadDeItems})
         })
         .catch( e => { console.log(e) } )
 

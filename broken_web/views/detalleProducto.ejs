@@ -6,8 +6,10 @@
     <link rel='stylesheet' href='/stylesheets/product.css' />
   </head>
   <body>
-
+    
     <%- include('./partials/header.ejs')%>
+
+    
     
     <main>
 
@@ -38,7 +40,7 @@
 
             </article>
             <br>
-
+            
             <form action="/product/detalleProducto/<%= producto.id %>" method="POST">
                 <div id="talles">TALLE: <br>
                     <% producto.talles.forEach(talle => { %>
@@ -63,17 +65,21 @@
             <article id="descripcion">
                 <div id="descrip_titulo">DESCRIPCIÓN</div>
                 <div id="descrip_content"><%= producto.descripcion %></div>
-            </article>
-
+            </article> 
             
-            <% if(admin == true){ %>
-                <a href="/product/edicionProductos/<%=producto.id%>"><button class="edit-prod" >EDITAR</button></a>
-                <a href="/product/borrar/<%=producto.id%>"><button class="edit-prod">BORRAR</button></a>
-            <% } %>
+            
+            
 
-        </section>
+        </section>       
 
-    </main>
+    </main>   
+    
+    <% if(admin == true){ %>
+        <div id="detalle-prod-admin">
+            <a href="/product/edicionProductos/<%=producto.id%>"><button class="edit-prod" >EDITAR</button></a>
+            <a href="/product/borrar/<%=producto.id%>"><button class="edit-prod">BORRAR</button></a>
+        </div>
+    <% } %>
 
     <%- include("./partials/footer") %>
 

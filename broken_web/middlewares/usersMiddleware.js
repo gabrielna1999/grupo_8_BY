@@ -69,6 +69,7 @@ const usersMiddleware = {
         }
     },
 
+    // Bloqueo las vistas que requieren estar logueado para usuarios no logueados
     esUsuario: function(req, res, next){
         if(req.session.usuarioLogueado != undefined){
             next();

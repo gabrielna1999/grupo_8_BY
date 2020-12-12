@@ -13,7 +13,7 @@
             <h2>TU CARRITO</h2> 
             
             <% if(carrito == undefined){ %>
-                <h3 style="color: white; text-align: center; margin-top: 50px"> NO HAY PRODUCTOS EN TU CARRITO </h3>
+                
             <% } %>
 
             <% if(carrito != undefined){ carrito.forEach(producto => { %>
@@ -29,11 +29,17 @@
                     <p id="talle"> cantidad <%= producto.cantidad %></p>
                     <p id="precio">$<%= producto.precio %></p>
                 </section>
-            <% }) } %>          
+            <% }) } %>  
+            
+            <% if(cantidadDeItems == 0){ %>
+                <p style="color: white; text-align: center; margin-top: 50px; margin-bottom: 40px"> No hay productos en tu carrito </p>
+                <a href="/product/vistaProductos" style="justify-self: center; align-self: center;"><button type="text" class="botonFinal" style="justify-self: center;">VER PRODUCTOS</button></a>
+
+            <% } %>
 
                      
             <section id="botones" style="margin-top: 100px">   
-                <% if(compra != undefined){ %>
+                <% if(cantidadDeItems != 0){ %>
                 <div class="total">
                     <div class="ptotal">TOTAL: &nbsp $<%= compra.precio_total %></div>
                 </div>
@@ -45,17 +51,12 @@
                     <a href="/product/finalizarCompra" class="divFinal"><button type="text" class="botonFinal">FINALIZAR COMPRA</button></a>
                 </div>
 
-                <% } %>
-
-                <% if(compra == undefined){ %>
-
-                    <a href="/product/vistaProductos" style="justify-self: center; align-self: center;"><button type="text" class="botonFinal">VER PRODUCTOS</button></a>
-
-                <% } %>
+                <% } %>               
                 
 
                 
             </section>
+           
         </main>
         <%- include("./partials/footer") %>
   </body>

@@ -7,8 +7,9 @@ const mainController = {
       raw: true,
       nest: true
     })        
-    .then(function(productos){                    
-        res.render("index", {productos, usuarioLogueado: req.session.usuarioLogueado});                
+    .then(function(productos){  
+        console.log(req.session.cantidadDeItems + " CANTIDAD DE PRODUCTOS")                  
+        res.render("index", {productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems});                
     })
     .catch(function(error){
         console.log(error);

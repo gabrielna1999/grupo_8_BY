@@ -6,6 +6,7 @@ var logger = require('morgan');
 var {check, validationResult, body} = require('express-validator');
 var session = require('express-session');
 const usersMiddleware = require('./middlewares/usersMiddleware');
+const carritoMiddleware = require('./middlewares/carritoMiddleware');
 
 
 var productRouter = require('./routes/product')
@@ -31,6 +32,8 @@ app.use(session({secret: " Data Secret "}));
 app.use(usersMiddleware.recordame);
 // Chequeo si el usuario logueado es admin
 app.use(usersMiddleware.esAdmin);
+// Le paso al header la cantidad de productos que hay en el carrito
+app.use(carritoMiddleware.carritoHeader);
 
 // RUTAS
 app.use('/product', productRouter);

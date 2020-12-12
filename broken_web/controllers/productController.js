@@ -7,7 +7,7 @@ const productController = {
 
         })        
         .then(function(producto){          
-            res.render("detalleProducto", {producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin});                
+            res.render("detalleProducto", {producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin, cantidadDeItems: req.session.cantidadDeItems});                
         })
         .catch(function(error){
             console.log(error);
@@ -21,7 +21,7 @@ const productController = {
         .then(function(compraEncontrada){
             // Si no la tiene, devuelvo el carrito vacio
             if(compraEncontrada == undefined){
-                res.render("carrito", {carrito: undefined, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada});
+                res.render("carrito", {carrito: undefined, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada, cantidadDeItems: req.session.cantidadDeItems});
             }
             // Si la tiene, devuelvo el carrito con todos los productos que contiene:
             else{      
@@ -41,7 +41,7 @@ const productController = {
                     });
 
                     // Renderizo el carrito pasandole el array de productos asociados a la compra
-                    res.render("carrito", {carrito, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada});
+                    res.render("carrito", {carrito, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada, cantidadDeItems: req.session.cantidadDeItems});
                 })
                 .catch(function(error){
                     console.log(error);
@@ -58,7 +58,7 @@ const productController = {
         if(req.admin == true){
             db.Categorias.findAll()
             .then(function(categorias){
-                res.render('cargarProducto', {categorias:categorias, usuarioLogueado: req.session.usuarioLogueado});
+                res.render('cargarProducto', {categorias:categorias, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems});
             })
         }
         else{
@@ -89,7 +89,7 @@ const productController = {
             nest: true
         })        
         .then(function(productos){                    
-            res.render("vistaProductos",{productos, usuarioLogueado: req.session.usuarioLogueado});                
+            res.render("vistaProductos",{productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems});                
         })
         .catch(function(error){
             console.log(error);
@@ -103,7 +103,7 @@ const productController = {
 
             Promise.all([pedidoProductos, pedidoCategorias])
             .then(function([productos, categorias]){
-                res.render("edicionProductos", {productos:productos, categorias:categorias, usuarioLogueado: req.session.usuarioLogueado});
+                res.render("edicionProductos", {productos:productos, categorias:categorias, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems});
             })
         }
         else{

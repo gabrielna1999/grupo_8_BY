@@ -6,7 +6,7 @@ const usersController = {
 
     // GET login
     login: function(req,res,next) {
-    res.render("login", {usuarioLogueado: req.session.usuarioLogueado});
+    res.render("login", {usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos});
     },
 
     // POST login
@@ -21,7 +21,7 @@ const usersController = {
             .then(function(usuario){
                 // Si es undefined (no existe un usuario con ese email) devuelvo el mensaje explicandolo
                 if(usuario == undefined){
-                    res.render("login", { errors: [ {msg: 'No existe un usuario con ese email'}], usuarioLogueado: req.session.usuarioLogueado})
+                    res.render("login", { errors: [ {msg: 'No existe un usuario con ese email'}], usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos})
                 }
                 // Si encuentro un usuario que coincida, comparo las contrasenas
                 else{
@@ -39,7 +39,7 @@ const usersController = {
                     }
                     // Si la contrasena es incorrecta devuelvo el mensaje
                     else{
-                        res.render("login", { errors: [ {msg: 'La contraseña es incorrecta'}], usuarioLogueado: req.session.usuarioLogueado})
+                        res.render("login", { errors: [ {msg: 'La contraseña es incorrecta'}], usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos})
                     }
                 }                                             
                 
@@ -49,13 +49,13 @@ const usersController = {
             })
         }
         else{
-            return res.render("login", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado })
+            return res.render("login", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
         }
     },
 
     // GET register
     register: function(req, res, next){
-        res.render("register", {usuarioLogueado: req.session.usuarioLogueado});
+        res.render("register", {usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos});
     },
 
     // POST register
@@ -79,7 +79,7 @@ const usersController = {
             // res.redirect('/')
         }
         else{
-            return res.render("register", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado })
+            return res.render("register", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
         }
 
         
