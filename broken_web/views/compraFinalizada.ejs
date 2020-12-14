@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Broken Youth | Carrito de Compras</title>
+    <%- include('./partials/head.ejs')%>    
+    <link rel='stylesheet' href='/stylesheets/carrito.css' />
+  </head>
+    <body>
+        <%- include('./partials/header.ejs')%>  
+
+        <main>
+            
+            <h2 class="centrado">FELICITACIONES!</h2>
+            <h3 class="centrado">CERRASTE TU COMPRA POR $ <%= compra.precio_total%></h3>
+            <ul class="centrado">
+                <!-- <h4 class="centrado">COMPRASTE:</h4>
+                <% compra.comprasProductos.forEach(compraProducto => { %>
+                    <li>
+                        <%= compraProducto.id %>
+                    </li>
+                <% }) %> -->
+            </ul>
+            
+        </main>
+        <%- include("./partials/footer") %>
+  </body>
+</html>

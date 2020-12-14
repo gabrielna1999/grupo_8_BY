@@ -53,6 +53,8 @@
     font-size: 1.2vw;
 }
 
+
+
 @media(max-width: 700px){
     #imagen{
         width: 80vw;

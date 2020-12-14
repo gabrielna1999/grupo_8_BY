@@ -5,6 +5,7 @@ main{
 
 h2{
     display: block;
+    width: 100vw;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3vw;
     text-align: center;
@@ -30,12 +31,18 @@ h2{
 }
 
 .imagen{
-    width: 15vw;
+    width: 10vw;
     padding-top: 1vw;
 }
 
 #precio{
     font-size: calc(1em + 0.2vw);
+    font-weight: 500;
+    font-style: italic;
+}
+
+#talle{
+    font-size: calc(1em - 0.1vw);
     font-weight: 500;
     font-style: italic;
 }
@@ -52,14 +59,14 @@ h2{
 .botones{
     margin: 10px;
     padding: 10px;
-    font-size: 2px;
+    font-size: 1px;
 }
 
 button{
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    width: 3vw;
-    height: 3vw;
+    width: 2vw;
+    height: 2vw;
     border: solid white 2px;
     background-color: black;
 
@@ -73,7 +80,7 @@ button:hover{
 }
 
 .dos{
-    font-size: 2vw;
+    font-size: 1.8vw;
     text-align: center;    
     width: 3vw;
     height: 3vw;
@@ -150,6 +157,10 @@ button:hover{
     margin: 0px 20px;
     font-size: 18px;
     height: 50px;
+}
+
+.centrado{
+    text-align: center;
 }
 
 @media(max-width: 700px){

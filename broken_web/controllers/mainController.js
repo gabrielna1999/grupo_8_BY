@@ -7,13 +7,22 @@ const mainController = {
       raw: true,
       nest: true
     })        
-    .then(function(productos){                    
-        res.render("index", {productos, usuarioLogueado: req.session.usuarioLogueado});                
+    .then(function(productos){  
+        console.log(req.session.cantidadDeItems + " CANTIDAD DE PRODUCTOS")                  
+        res.render("index", {productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems});                
     })
     .catch(function(error){
         console.log(error);
     })
-  } 
+  },
+  
+  quienesSomos: (req,res,next)=>{
+    res.render('quienesSomos', {usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems} )
+  },
+
+  comoComprar: (req,res,next)=>{
+    res.render('comoComprar', {usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems} )
+  },
 }
 
 module.exports = mainController;

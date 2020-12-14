@@ -137,6 +137,16 @@
     margin-left: 0px;
 }
 
+#detalle-prod-admin{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10vw;
+}
+
+
 
 @media(min-width: 700px){
     main{
