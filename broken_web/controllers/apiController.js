@@ -50,10 +50,17 @@ const apiController = {
     cantidadCarritos: function(req, res, next){
         db.Compras.findAll()
         .then(function(compras){
+            let cantidadComprasFin = 0;
+            compras.forEach(compra => {
+                if(compra.finalizada == 1){
+                    cantidadComprasFin += 1
+                }
+                
+            });
             let respuesta = {
                 meta:{
                     status: 200,
-                    total: compras.length 
+                    total: cantidadComprasFin
                 },
                 data: compras
             }

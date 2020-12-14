@@ -33,6 +33,7 @@ const productController = {
             precio: req.body.precio,
             descripcion: req.body.descripcion,
             categoria_id: req.body.categoria,
+            imagen_ruta: req.body.imagen,
         })
         .then(function(){
         res.redirect('/product/vistaProductos')
@@ -73,17 +74,24 @@ const productController = {
     },
 
     actualizar: function(req, res, next){
+        console.log(req.body)
         db.Productos.update({
             nombre: req.body.producto,
             precio: req.body.precio,
             descripcion: req.body.descripcion,
             categoria_id: req.body.categoria,
+            imagen_ruta: req.body.imagen,
         }, {
             where: {
                 id: req.params.id
             }
-        });
-        res.redirect("/product/detalleProducto/" + req.params.id)
+        })
+        .then(function(){
+            res.redirect("/product/detalleProducto/" + req.params.id)
+        })
+        .catch(e => {console.log(e)})
+        
+       
         
 
 
@@ -96,16 +104,9 @@ const productController = {
                 id: req.params.id
             }
         })
-<<<<<<< HEAD
         res.redirect('/product/vistaproductos');
         
     }
-=======
-        res.redirect("/product/vistaproductos")
-    },
-
-
->>>>>>> 39fb4987cdeb14612a741b1d9035ebfb562c4d00
 
        
 }

@@ -37,18 +37,18 @@
         
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="PRODUCTO" value="<%=productos.nombre%>">   
+                            <input type="text" placeholder="PRODUCTO" value="<%=productos.nombre%>" name="producto">   
                         </div>
 
 
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="PRECIO" value="<%=productos.precio%>">   
+                            <input type="text" placeholder="PRECIO" value="<%=productos.precio%>" name="precio">   
                         </div>
 
                         <div class="input-contenedor">
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="text" placeholder="DESCRIPCION" value="<%=productos.descripcion%>">   
+                            <input type="text" placeholder="DESCRIPCION" value="<%=productos.descripcion%>" name="descripcion">   
                         </div>
 
                         <div class="input-contenedor">
@@ -69,6 +69,12 @@
                             <% } %>
                             </select> 
                         </div>
+
+                        <div class="input-contenedor">
+                            <!-- <i class="far fa-unlock-alt icon"></i> -->
+                            <input type="image" placeholder="IMAGEN" value="<%=productos.imagen_ruta%>" name="imagen">   
+                        </div>
+
                         <button type="submit">Editar</button>
                     </div>
                 </form>

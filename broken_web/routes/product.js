@@ -14,7 +14,7 @@ router.post('/cargarProducto', productController.guardarProducto);
 router.get("/vistaProductos", productController.vistaProductos);
 router.get("/edicionProductos/:id", usersMiddleware.esAdmin, productController.editarProductos); 
 router.post("/edicionProductos/:id", productController.actualizar);
-router.post("/borrar/:id", productController.borrar);
+router.get("/borrar/:id", productController.borrar);
 router.get('/sacarDelCarrito/:id', cartController.eliminarProducto );
 router.get('/finalizarCompra', usersMiddleware.esUsuario, cartController.finalizarCompra );
 
