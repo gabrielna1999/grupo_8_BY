@@ -122,25 +122,25 @@ const productController = {
             descripcion: req.body.descripcion,
             categoria_id: req.body.categoria,
         }, {
-            where:{
+            where: {
                 id: req.params.id
             }
-        })
-        .then(function(){
-        res.redirect("/product/vistaProductos")
-        })
+        });
+        res.redirect("/product/detalleProducto/" + req.params.id)
+        
 
 
 
     },
 
-    borrar: function(req, res){
+    borrar: function(req, res, next){
         db.Productos.destroy({
             where:{
                 id: req.params.id
             }
         })
-        res.redirect("/product/vistaproductos")
+        res.redirect('/product/vistaproductos');
+        
     }
 
        

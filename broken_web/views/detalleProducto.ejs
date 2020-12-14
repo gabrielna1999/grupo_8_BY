@@ -61,7 +61,9 @@
             
             <% if(admin == true){ %>
                 <a href="/product/edicionProductos/<%=producto.id%>"><button class="edit-prod" >EDITAR</button></a>
-                <a href="/product/borrar/<%=producto.id%>"><button class="edit-prod">BORRAR</button></a>
+                <form action="/product/borrar/<%=producto.id%>" method="POST">
+                    <button type= "submit" edit-prod">BORRAR</button>
+                </form>
             <% } %>
 
         </section>
