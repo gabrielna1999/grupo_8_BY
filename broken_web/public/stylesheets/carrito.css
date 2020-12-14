@@ -31,7 +31,7 @@ h2{
 }
 
 .imagen{
-    width: 15vw;
+    width: 10vw;
     padding-top: 1vw;
 }
 
@@ -59,14 +59,14 @@ h2{
 .botones{
     margin: 10px;
     padding: 10px;
-    font-size: 2px;
+    font-size: 1px;
 }
 
 button{
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    width: 3vw;
-    height: 3vw;
+    width: 2vw;
+    height: 2vw;
     border: solid white 2px;
     background-color: black;
 
@@ -80,7 +80,7 @@ button:hover{
 }
 
 .dos{
-    font-size: 2vw;
+    font-size: 1.8vw;
     text-align: center;    
     width: 3vw;
     height: 3vw;

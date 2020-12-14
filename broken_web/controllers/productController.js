@@ -13,46 +13,7 @@ const productController = {
             console.log(error);
         })
        
-    },   
-
-    vistaCarrito: function(req, res,next){
-        // Busco si el usuario logueado tiene una compra iniciada
-        db.Compras.findOne({ include: ['comprasProductos'], where: { usuario_id: req.session.usuarioLogueado.id, finalizada: 0}})
-        .then(function(compraEncontrada){
-            // Si no la tiene, devuelvo el carrito vacio
-            if(compraEncontrada == undefined){
-                res.render("carrito", {carrito: undefined, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada, cantidadDeItems: req.session.cantidadDeItems});
-            }
-            // Si la tiene, devuelvo el carrito con todos los productos que contiene:
-            else{      
-                // Creo un array 'carrito' que va a contener todos los productos          
-                var carrito = []
-                // Traigo todos los productos asociados a esta compra a traves de la tabla intermedia 'compras_productos'
-                db.ComprasProductos.findAll({ 
-                    include: {association: 'producto'},
-                    where: { compra_id: compraEncontrada.id }
-                })
-                // Por cada 'compra_producto' encontrado, busco la informacion del producto que corresponde y lo agrego al carrito
-                .then(compraProductosEncontrados => {
-                    compraProductosEncontrados.forEach(compraProducto => {
-                        compraProducto.producto.talle = compraProducto.talle_id;
-                        compraProducto.producto.cantidad = compraProducto.cantidad;
-                        carrito.push(compraProducto.producto)
-                    });
-
-                    // Renderizo el carrito pasandole el array de productos asociados a la compra
-                    res.render("carrito", {carrito, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada, cantidadDeItems: req.session.cantidadDeItems});
-                })
-                .catch(function(error){
-                    console.log(error);
-                })
-                
-            }
-        })
-        .catch(function(error){
-            console.log(error);
-        })
-    },
+    },      
     
     cargarProducto: function(req, res , next){
         if(req.admin == true){
@@ -137,7 +98,9 @@ const productController = {
             }
         })
         res.redirect("/product/vistaproductos")
-    }
+    },
+
+
 
        
 }
