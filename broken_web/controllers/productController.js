@@ -13,46 +13,7 @@ const productController = {
             console.log(error);
         })
        
-    },   
-
-    vistaCarrito: function(req, res,next){
-        // Busco si el usuario logueado tiene una compra iniciada
-        db.Compras.findOne({ include: ['comprasProductos'], where: { usuario_id: req.session.usuarioLogueado.id, finalizada: 0}})
-        .then(function(compraEncontrada){
-            // Si no la tiene, devuelvo el carrito vacio
-            if(compraEncontrada == undefined){
-                res.render("carrito", {carrito: undefined, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada, cantidadDeItems: req.session.cantidadDeItems});
-            }
-            // Si la tiene, devuelvo el carrito con todos los productos que contiene:
-            else{      
-                // Creo un array 'carrito' que va a contener todos los productos          
-                var carrito = []
-                // Traigo todos los productos asociados a esta compra a traves de la tabla intermedia 'compras_productos'
-                db.ComprasProductos.findAll({ 
-                    include: {association: 'producto'},
-                    where: { compra_id: compraEncontrada.id }
-                })
-                // Por cada 'compra_producto' encontrado, busco la informacion del producto que corresponde y lo agrego al carrito
-                .then(compraProductosEncontrados => {
-                    compraProductosEncontrados.forEach(compraProducto => {
-                        compraProducto.producto.talle = compraProducto.talle_id;
-                        compraProducto.producto.cantidad = compraProducto.cantidad;
-                        carrito.push(compraProducto.producto)
-                    });
-
-                    // Renderizo el carrito pasandole el array de productos asociados a la compra
-                    res.render("carrito", {carrito, usuarioLogueado: req.session.usuarioLogueado, compra: compraEncontrada, cantidadDeItems: req.session.cantidadDeItems});
-                })
-                .catch(function(error){
-                    console.log(error);
-                })
-                
-            }
-        })
-        .catch(function(error){
-            console.log(error);
-        })
-    },
+    },      
     
     cargarProducto: function(req, res , next){
         if(req.admin == true){
@@ -72,9 +33,27 @@ const productController = {
             precio: req.body.precio,
             descripcion: req.body.descripcion,
             categoria_id: req.body.categoria,
+            imagen_ruta: req.body.imagen,
         })
-        .then(function(){
-        res.redirect('/product/vistaProductos')
+        .then(function(producto){
+            res.redirect('/product/vistaProductos')
+            let promesa1 = db.ProductosTalles.create({
+                producto_id: producto.id,
+                talle_id: 1
+            })
+            let promesa2 = db.ProductosTalles.create({
+                producto_id: producto.id,
+                talle_id: 2
+            })
+            let promesa3 = db.ProductosTalles.create({
+                producto_id: producto.id,
+                talle_id: 3
+            })
+            Promise.all([promesa1,promesa2,promesa3])
+            .then(valores=>{                
+                res.redirect('/product/vistaProductos')
+            }) 
+            .catch(e=>{console.log(e)}) 
         })
         .catch(function(error){
             console.log(error)
@@ -89,7 +68,7 @@ const productController = {
             nest: true
         })        
         .then(function(productos){                    
-            res.render("vistaProductos",{productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems});                
+            res.render("vistaProductos", {productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems, admin: req.admin});                
         })
         .catch(function(error){
             console.log(error);
@@ -112,31 +91,43 @@ const productController = {
     },
 
     actualizar: function(req, res, next){
+        console.log(req.body)
         db.Productos.update({
             nombre: req.body.producto,
             precio: req.body.precio,
             descripcion: req.body.descripcion,
             categoria_id: req.body.categoria,
+            imagen_ruta: req.body.imagen,
         }, {
-            where:{
+            where: {
                 id: req.params.id
             }
         })
         .then(function(){
-        res.redirect("/product/vistaProductos")
+            res.redirect("/product/detalleProducto/" + req.params.id)
         })
+        .catch(e => {console.log(e)})
+        
+       
+        
 
 
 
     },
 
-    borrar: function(req, res){
+    borrar: function(req, res, next){
         db.Productos.destroy({
             where:{
                 id: req.params.id
             }
         })
-        res.redirect("/product/vistaproductos")
+        .then(()=>{
+            db.ProductosTalles.destroy({
+                where: { producto_id: req.params.id }
+            })
+        })
+        res.redirect('/product/vistaproductos');
+        
     }
 
        
