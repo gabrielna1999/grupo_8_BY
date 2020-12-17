@@ -90,7 +90,61 @@ const usersController = {
         req.session.usuarioLogueado = undefined;
         res.redirect('/')
 
-    }
+    },
+
+    // Ver perfil
+    verPerfil: function(req,res,next){
+        res.render('perfil', { usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
+        
+
+    },
+
+    // Post ver perfil
+    irAEditarPerfil: function(req,res,next){
+        res.redirect('/users/editarPerfil')
+
+    },
+
+
+    // Editar perfil
+    editarPerfil: function(req,res,next){
+        res.render('editarPerfil', { usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
+        
+
+    },
+
+    // Process editar perfil
+    guardarCambios: function(req,res,next){
+        var errors = validationResult(req);
+        var passwordCrypt = bcrypt.hashSync(req.body.password, 10);    
+        if(errors.isEmpty()){
+            db.Usuarios.update({
+                nombre: req.body.nombre,
+                email: req.body.email,
+                fecha_nacimiento: req.body.fecha,
+                password: passwordCrypt
+            },{
+                where: { id: req.params.id},
+                returning: true
+            })
+            .then(()=>{                
+                req.session.usuarioLogueado.nombre = req.body.nombre;
+                req.session.usuarioLogueado.email = req.body.email;
+                req.session.usuarioLogueado.fecha = req.body.fecha;
+                req.session.usuarioLogueado.password = req.body.password;
+                res.render('perfil', { usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
+            })
+            .catch(e=>{
+                console.log(e)
+            })
+        }
+        else{
+            return res.render("editarPerfil", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
+        }
+        
+    },
+
+
 
     
     

@@ -1,29 +1,34 @@
 <header>
     <section id = "mobile_header">
         <div> <img class="header" id="menu_icon" src="/images/icons/menu.png"> </div>
-        <div> <img class="header" id="menu_logo" src="/images/logo.png"> </div>
-        <div> <img class="header" id="menu_user" src="/images/icons/user.png"> </div>
+        <div> <a href="/"><img class="header" id="menu_logo" src="/images/logo.png"></a> </div>
+        <div>
+            <% if(usuarioLogueado == undefined) { %> 
+                <a href="/users/login"><img class="header" id="menu_user" src="/images/icons/user.png"></a>
+            <% } %> 
+            <% if(usuarioLogueado != undefined) { %>
+                <a href="/users/perfil"><img class="header" id="menu_user" src="/images/icons/user.png"></a>
+            <% } %>
+        </div>
     </section> 
     <section id = "web_header">
         <article id="top">
             <% if(usuarioLogueado != undefined){ %>
-                <div id="login"><p id="usuario"><%= usuarioLogueado.nombre %></p>&nbsp / &nbsp<a href="/users/cerrarSesion">CERRAR SESION</a></div>
+                <div id="login"><a title="Ver Perfil" id="usuario" href="/users/perfil"><%=usuarioLogueado.nombre%></a>&nbsp / &nbsp<a href="/users/cerrarSesion">CERRAR SESION</a></div>
             <% } else{ %>
                 <div id="login"><a href = "/users/login">INICIAR SESION </a>&nbsp / &nbsp<a href="/users/register"> REGISTRARSE</a></div>
             <% } %>
 
             <div id="buscar"><input type="text" placeholder="Buscar..." name="buscar" ><i id ="lupa"class="fa fa-search" aria-hidden="true"></i></div>
-            <a href = "/product/carrito"><div id="carrito"><i id="carrito_icon" class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>&nbsp <%= cantidadDeItems %> items </div></a>
+            <a title="Ir a Carrito" href="/product/carrito"><div id="carrito"><i id="carrito_icon" class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>&nbsp <%= cantidadDeItems %> items </div></a>
         </article>
         <article id="logo_art">
             <a href = "/"><div> <img class="header" id="menu_logo_web" src="/images/logo.png"> </div></a>
         </article>
         <article id="web_menu">
             <div><a href="/product/vistaproductos">PRODUCTOS</a></div>
-            <!-- <div><a href="">TEMPORADAS</a></div> -->
             <div><a href="/comoComprar">COMO COMPRAR</a></div> 
             <div><a href="quienesSomos">QUIENES SOMOS</a></div>
-            <!-- <div><a href="">CONTACTO</a></div> -->
         </article>
     </section>
 </header>

@@ -27,6 +27,10 @@
 
     </section>
 
+    <% if(admin == true){ %>
+      <a style="align-self: center; justify-self: center; margin: 20px;" href="/product/cargarProducto"><button class="edit-prod" style="font-size: 15px; font-weight: bold;">AGREGAR PRODUCTO</button></a></a>
+    <% } %>
+
     <%- include("./partials/footer") %>
 
   </body>

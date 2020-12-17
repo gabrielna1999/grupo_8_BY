@@ -35,8 +35,25 @@ const productController = {
             categoria_id: req.body.categoria,
             imagen_ruta: req.body.imagen,
         })
-        .then(function(){
-        res.redirect('/product/vistaProductos')
+        .then(function(producto){
+            res.redirect('/product/vistaProductos')
+            let promesa1 = db.ProductosTalles.create({
+                producto_id: producto.id,
+                talle_id: 1
+            })
+            let promesa2 = db.ProductosTalles.create({
+                producto_id: producto.id,
+                talle_id: 2
+            })
+            let promesa3 = db.ProductosTalles.create({
+                producto_id: producto.id,
+                talle_id: 3
+            })
+            Promise.all([promesa1,promesa2,promesa3])
+            .then(valores=>{                
+                res.redirect('/product/vistaProductos')
+            }) 
+            .catch(e=>{console.log(e)}) 
         })
         .catch(function(error){
             console.log(error)
@@ -51,7 +68,7 @@ const productController = {
             nest: true
         })        
         .then(function(productos){                    
-            res.render("vistaProductos",{productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems});                
+            res.render("vistaProductos", {productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems, admin: req.admin});                
         })
         .catch(function(error){
             console.log(error);
@@ -103,6 +120,11 @@ const productController = {
             where:{
                 id: req.params.id
             }
+        })
+        .then(()=>{
+            db.ProductosTalles.destroy({
+                where: { producto_id: req.params.id }
+            })
         })
         res.redirect('/product/vistaproductos');
         

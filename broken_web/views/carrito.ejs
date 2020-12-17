@@ -18,7 +18,7 @@
 
             <% if(carrito != undefined){ carrito.forEach(producto => { %>
                 <section class="producto">                
-                    <div class="titulo"><p id = "modelo"><%= producto.nombre %></p><a href="/product/sacarDelCarrito/<%= producto.id %>"><i id="trash_icon" class="fa fa-trash fa-lg" style="color: white;"></i></a></div>
+                    <div class="titulo"><p id = "modelo"><%= producto.nombre %></p><a href="/product/sacarDelCarrito/<%= producto.compraProductoId %>"><i id="trash_icon" class="fa fa-trash fa-lg" style="color: white;"></i></a></div>
                     <div class="cantidad">
                         <img class="imagen" src="/images/producto/<%= producto.imagen_ruta %>">                        
                         <a href="http://localhost:3000/product/carrito/restar/<%= producto.compraProductoId %>/<%= producto.cantidad %>" class="botones"><button type="text" class="mas-menos">-</button></a>
@@ -26,8 +26,8 @@
                         <a href="http://localhost:3000/product/carrito/sumar/<%= producto.compraProductoId %>/<%= producto.cantidad %>" class="botones"><button type="text" class="mas-menos">+</button></a> 
                     </div>
                     <br>
-                    <p id="talle"> talle <%= producto.talle %></p>
-                    <p id="talle"> cantidad <%= producto.cantidad %></p>
+                    <p id="talle"> Talle <%= producto.talle %></p>
+                    <p id="talle"> Cantidad:  <%= producto.cantidad %></p>
                     <p id="precio">$<%= producto.precio %></p>
                 </section>
             <% }) } %>  
