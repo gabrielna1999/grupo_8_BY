@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2020 at 02:57 PM
+-- Generation Time: Dec 18, 2020 at 12:46 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -56,15 +56,6 @@ CREATE TABLE `compras` (
   `fecha_finalizacion` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `compras`
---
-
-INSERT INTO `compras` (`fecha_inicio`, `precio_total`, `id`, `usuario_id`, `finalizada`, `fecha_finalizacion`) VALUES
-('2020-12-09', 1400, 1, 17, 1, NULL),
-('2020-12-10', 1400, 2, 18, 0, NULL),
-('2020-12-10', 1900, 3, 17, 0, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -78,22 +69,6 @@ CREATE TABLE `compras_productos` (
   `cantidad` int(11) NOT NULL,
   `talle_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `compras_productos`
---
-
-INSERT INTO `compras_productos` (`id`, `producto_id`, `compra_id`, `cantidad`, `talle_id`) VALUES
-(1, 4, 0, 0, 0),
-(2, 1, 0, 0, 0),
-(3, 1, 0, 0, 0),
-(4, 2, 0, 0, 0),
-(5, 4, 2, 0, 0),
-(6, 3, 1, 0, 0),
-(7, 3, 3, 0, 0),
-(8, 2, 3, 0, 0),
-(9, 4, 3, 0, 0),
-(10, 2, 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -144,14 +119,14 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`id`, `nombre`, `precio`, `descripcion`, `categoria_id`, `stock`, `imagen_ruta`) VALUES
 (1, 'INHERITANCE', 2000, 'Exclusively made for the broken ones.', 1, 10, 'inheritance_main.png'),
-(2, 'TIME IS $$$', 2500, 'Exclusively made for the broken ones.', 1, 10, 'time_main.png'),
+(2, 'TIME IS $$$', 2700, 'Exclusively made for the broken ones.', 1, 10, 'time_main.png'),
 (3, 'INTERFERENCIA COMUNICATIVA', 1900, 'Exclusively made for the broken ones.', 1, 10, 'inter_main.png'),
 (4, 'JUGUITO', 1400, 'Exclusively made for the broken ones.', 2, 10, 'juguito_main.png'),
 (5, 'ILLICIT', 1300, 'Exclusively made for the broken ones.', 2, 10, 'illicit_main.png'),
 (6, 'ADVANCED TECH', 1200, 'Exclusively made for the broken ones.', 2, 10, 'advTech_main.png'),
 (7, 'BROKEN YTH', 1500, 'Exclusively made for the broken ones.', 1, 10, 'broken_main.png'),
 (8, 'FUCKIN GRANDMA', 1500, 'Exclusively made for the broken ones.', 1, 10, 'grandma_main.png'),
-(9, 'OUTSIDER', 1600, 'Exclusively made for the broken ones.', 1, 10, 'outsider_main.png');
+(9, 'OUTSIDER', 1800, 'Exclusively made for the broken ones.', 1, 10, 'outsider_main.png');
 
 -- --------------------------------------------------------
 
@@ -240,7 +215,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `fecha_nacimiento`, `admin`, `fecha_creacion`) VALUES
 (2, 'admin', 'brokenyouth.sw@gmail.com', '8r0k3n7t4', '2020-12-01', 1, '2020-12-01'),
-(17, 'Gabriel', 'gabrieln1999@gmail.com', '$2b$10$SP2inYhnOL7594/iXoh15OETOExmpEIqCCgazrtV3mskl4tyHevHK', '2020-12-01', 0, '2020-12-09'),
+(17, 'Gabriel', 'gabrieln1999@gmail.com', '$2b$10$fk2xQUkOCwq/JHSVjpEsm.FKPNXsHHG3qNdyw72Rnji9cQXthjoD.', '1999-10-07', 1, '2020-12-09'),
 (18, 'Demo', 'demo@demo.com', '$2b$10$5gv.ADFd1P09YaE5g/8zyuV7/lYyZEiCBrShUxLZPeqvoLNS0Ohqu', '2020-12-12', 0, '2020-12-10'),
 (19, 'a', 'a@gmail.com', '$2b$10$TpXQfKHYeu02Z9DUBEjnxePH5XtzHxuodqh6AZ6brulcw25cgaMWS', '2020-12-01', 0, '2020-12-10');
 
@@ -307,19 +282,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `compras_productos`
 --
 ALTER TABLE `compras_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `producto_talle`
+--
+ALTER TABLE `producto_talle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
