@@ -80,6 +80,7 @@ const usersController = {
         }
         else{
             return res.render("register", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
+            console.log(errors);
         }
 
         

@@ -3,8 +3,9 @@ var router = express.Router();
 const productController = require('../controllers/productController');
 const cartController = require('../controllers/cartController');
 const usersMiddleware = require('../middlewares/usersMiddleware');
+const detalleMiddleware = require('../middlewares/detalleMiddleware');
 
-router.get('/detalleProducto/:id', productController.vistaDetalleProducto );
+router.get('/detalleProducto/:id', detalleMiddleware.talle, productController.vistaDetalleProducto );
 router.post('/detalleProducto/:id', usersMiddleware.esUsuario, cartController.agregarProducto );
 router.get('/carrito', usersMiddleware.esUsuario, cartController.vistaCarrito);
 router.get('/carrito/sumar/:id/:cantidad', usersMiddleware.esUsuario, cartController.sumar);
@@ -12,7 +13,7 @@ router.get('/carrito/restar/:id/:cantidad', usersMiddleware.esUsuario, cartContr
 router.get('/cargarProducto', usersMiddleware.esAdmin, productController.cargarProducto);
 router.post('/cargarProducto', productController.guardarProducto);
 router.get("/vistaProductos", productController.vistaProductos);
-router.get("/edicionProductos/:id", usersMiddleware.esAdmin, productController.editarProductos); 
+router.get("/edicionProductos/:id", usersMiddleware.esAdmin,productController.editarProductos); 
 router.post("/edicionProductos/:id", productController.actualizar);
 router.get("/borrar/:id", productController.borrar);
 router.get('/sacarDelCarrito/:id', cartController.eliminarProducto );
