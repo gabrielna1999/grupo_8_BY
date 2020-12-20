@@ -11,25 +11,8 @@
     <%- include("./partials/header") %>
 
 
-        <main>
-            <div class="divder">
-                <div class="div1">
-                    <p class="datos">DATOS DEL PRODUCTO</p>
-                </div>
-                <div class="div2">
-                    <img src="/images/icons/Camara.png" class="img1">
-                </div>
-                <div class="div3">
-                    <img src="/images/icons/Camara.png">
-                    <img src="/images/icons/Camara.png">
-                    <img src="/images/icons/Camara.png">
-                </div>
-                
-
-            </div>
-
-            <div class="divizq">
-                <form class="formulario" method="POST">
+        <div>
+                <form class="formulario" method="POST" enctype="multipart/form-data">
 
                     <div class="contenedor">
                                 
@@ -56,15 +39,18 @@
                             <select name="categoria">
                             <% for ( let i = 0; i < categorias.length; i++) { %>
                                 <option value="<%=categorias[i].id%>">
-                                    <%=categorias[i].id%>
+                                    <%= categorias[i].id %>: <%= categorias[i].nombre %>
                                 </option>
                             <% } %>
                             </select> 
                         </div>
 
-                        
+                        <div class="input-contenedor">
+                            <label>IMAGEN</label>
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="file" placeholder="IMAGEN" name="imagen">   
+                            <input type="file" placeholder="IMAGEN" name="imagen">
+                        </div>
+                           
                         
 
                         <input type="submit" value="GUARDAR Y PUBLICAR" class="buttom">
