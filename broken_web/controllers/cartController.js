@@ -83,22 +83,24 @@ const cartController = {
                     usuario_id: req.session.usuarioLogueado.id,
                     finalizada: 0,
                     precio_total: producto.precio*req.body.cantidad
+                    })
+                    .then(function(compraCreada){
+                        console.log(req.body)
+                        db.ComprasProductos.create({
+                        producto_id: req.params.id,
+                        compra_id: compraCreada.id,
+                        cantidad: req.body.cantidad,
+                        talle_id: req.body.talle
+                        })    
+                                       
+                        res.redirect('/product/vistaProductos') 
+                    })               
+                    
+                    .catch( e => { console.log(e) } )
                 }) 
-                .then(function(compraCreada){
-                    db.ComprasProductos.create({
-                    producto_id: req.params.id,
-                    compra_id: compraCreada.id,
-                    cantidad: req.body.cantidad,
-                    talle: req.body.talle
-                    })    
-                                   
-                    res.redirect('/product/vistaProductos') 
-                })               
-                
                 .catch( e => { console.log(e) } )
                     
-                })
-                   
+                                  
             }
 
         }) 
