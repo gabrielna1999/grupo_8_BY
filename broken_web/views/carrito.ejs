@@ -27,7 +27,6 @@
                     </div>
                     <br>
                     <p id="talle"> Talle <%= producto.talle %></p>
-                    <p id="talle"> Cantidad:  <%= producto.cantidad %></p>
                     <p id="precio">$<%= producto.precio %></p>
                 </section>
             <% }) } %>  
@@ -44,8 +43,6 @@
                 <div class="total">
                     <div class="ptotal">TOTAL: &nbsp $<%= compra.precio_total %></div>
                 </div>
-
-                <div class="cupon"><input id="cuponB" name="cupon" placeholder="Agregar cupón..."></input></div>
 
                 <div class="final">
                     <a href="/product/vistaProductos" class="divFinal"><button type="text" class="botonFinal">CONTINUAR COMPRANDO</button></a>

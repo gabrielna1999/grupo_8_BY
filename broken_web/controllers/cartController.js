@@ -75,19 +75,24 @@ const cartController = {
                     })
                     .catch( e => { console.log(e) } )
                     
-                    res.redirect('/product/vistaProductos') 
-                }
-                else{
-                    db.Productos.findByPk(req.params.id)
-                    .then(function(producto){
-                        var precioTotal = (producto.precio /* producto.cantidad */) 
-                        db.Compras.create({
-                        precio_total: precioTotal, 
-                        usuario_id: req.session.usuarioLogueado.id,
-                        finalizada: 0,
-                        precio_total: producto.precio*req.body.cantidad
-                    }) 
+                    
+                })
+                .catch( e => { console.log(e) } )
+                
+                res.redirect('/product/vistaProductos') 
+            }
+            else{
+                db.Productos.findByPk(req.params.id)
+                .then(function(producto){
+                    var precioTotal = (producto.precio /* producto.cantidad */) 
+                    db.Compras.create({
+                    precio_total: precioTotal, 
+                    usuario_id: req.session.usuarioLogueado.id,
+                    finalizada: 0,
+                    precio_total: producto.precio*req.body.cantidad
+                    })
                     .then(function(compraCreada){
+                        console.log(req.body)
                         db.ComprasProductos.create({
                         producto_id: req.params.id,
                         compra_id: compraCreada.id,
@@ -99,13 +104,11 @@ const cartController = {
                     })               
                     
                     .catch( e => { console.log(e) } )
-                        
-                    })
-                       
-                }
-    
-            }) 
-            .catch( e => { console.log(e) } )
+                }) 
+                .catch( e => { console.log(e) } )
+                    
+                                  
+            }
 
         }
         else{

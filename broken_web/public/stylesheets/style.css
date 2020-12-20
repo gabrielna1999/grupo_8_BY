@@ -7,14 +7,15 @@ html{
 
 body{
   width: 100vw;
+  height: 100vh;
   background-color: black;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0px;
   margin: 0px;
-  display: inline-block;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 main{
@@ -207,14 +208,14 @@ input[type="text"]{
 
 #quienes-somos-main{
   margin-top: 150px;
-  width: 700px;
+  width: 100vw;
   text-align: center;
   align-self: center;
   justify-self: center;
 }
 
 #como-comprar{
-  width: 700px;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -239,14 +240,12 @@ body section{
 }
 
 #destacados{
-  border-bottom: solid white 2px;
-  border-top: solid white 2px;
   display: block;
   width: 100vw;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: calc(1em + 3vw);
   text-align: center;
-  margin: 100px 0px 30px 0px;
+  margin: 50px 0px 30px 0px;
 }
 
 .producto{
@@ -300,6 +299,8 @@ a{
   bottom: 0px;
   position: relative;
   width: 100%;
+  height: 65px; 
+  margin-top: -65px
 }
 
 footer p{
@@ -309,7 +310,10 @@ footer p{
 
 .instagram{
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 #insta_icon{
@@ -320,7 +324,7 @@ footer p{
 
 .instagramP{
   align-self: center;
-  margin-left: 5px;
+  color: white;
 }
 
 .segundo_div{
@@ -345,7 +349,7 @@ footer p{
   body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   main{
@@ -409,17 +413,39 @@ footer p{
       display: none;
   }
 
+  body{
+    justify-content: flex-start;
+  }
+
   #mobile_header{
       display: flex;
+  }
+
+  #quienes-somos-main{
+    margin: 0px;
+    justify-self: flex-start;
+  }
+
+  #destacados{
+    margin-top: 0px;
   }
 
   #carrusel{
     display: none;
   }
 
+  #como-comprar{
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+  }
+
   footer{
     display: none;
   }
+  
 
 }
 

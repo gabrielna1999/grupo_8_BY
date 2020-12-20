@@ -10,26 +10,39 @@
 
   <body>
     <%- include('./partials/header.ejs')%>
+    
+    <main id="productos">
+      <section class="vista">
+        <% if(productos != undefined){ %>
+          <% for (let i = 0; i < productos.length; i++){ %>
+          <div class="producto">
+            <a href="/product/detalleProducto/<%= productos[i].id %>">
+              <img id = "imagen" src="/images/producto/<%= productos[i].imagen_ruta %>">
+            </a>
+            <section id="info">  
+              <div id="nombreproduc"><%= productos[i].nombre %></div>
+              <div id="precioproduc">$<%= productos[i].precio %></div>
+            </section>
+          </div>
+          <% } %>
+        <% } %>  
+        
+        <% if(productos == ''){ %>
+          <p style="margin-top: 70px;">No se encontraron productos que coincidan con '<%= search%>'</p>
+        <% } %>
+        
 
-    <section class="vista">
-      
-      <% for (let i = 0; i < productos.length; i++){ %>
-      <div class="producto">
-        <a href="/product/detalleProducto/<%= productos[i].id %>">
-          <img id = "imagen" src="/images/producto/<%= productos[i].imagen_ruta %>">
-        </a>
-        <section id="info">  
-          <div id="nombreproduc"><%= productos[i].nombre %></div>
-          <div id="precioproduc">$<%= productos[i].precio %></div>
-        </section>
-      </div>
+      </section>
+
+      <% if(admin == true){ %>
+        <a style="display: block; align-self: center; justify-self: center; margin: 20px;" href="/product/cargarProducto"><button class="edit-prod" style="font-size: 15px; font-weight: bold;">AGREGAR PRODUCTO</button></a>
       <% } %>
+      
+    </main>
 
-    </section>
+    
 
-    <% if(admin == true){ %>
-      <a style="align-self: center; justify-self: center; margin: 20px;" href="/product/cargarProducto"><button class="edit-prod" style="font-size: 15px; font-weight: bold;">AGREGAR PRODUCTO</button></a></a>
-    <% } %>
+    
 
     <%- include("./partials/footer") %>
 

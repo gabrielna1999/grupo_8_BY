@@ -204,6 +204,16 @@
         align-self: flex-start;
     }
 
+    #prod_categoria{
+        padding: 0px;
+        color: lightgrey ;
+        text-align: start;
+        font-style: italic;
+        text-decoration-line: underline;
+        font-size: calc(1em);
+        align-self: flex-start;
+    }
+
     #prod_precio{
         font-size: calc(1.5vw);
         text-align: left;

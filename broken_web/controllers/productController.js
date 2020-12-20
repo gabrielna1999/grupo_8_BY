@@ -1,4 +1,6 @@
 const db = require('../database/models');
+const Sequelize = require('sequelize');
+const op = Sequelize.Op;
 
 const productController = {
     vistaDetalleProducto: function(req, res, next) {      
@@ -33,7 +35,7 @@ const productController = {
             precio: req.body.precio,
             descripcion: req.body.descripcion,
             categoria_id: req.body.categoria,
-            imagen_ruta: req.body.imagen,
+            imagen_ruta: req.files[0].filename
         })
         .then(function(producto){
             res.redirect('/product/vistaProductos')
@@ -63,7 +65,7 @@ const productController = {
 
     vistaProductos: function(req, res, next){
         db.Productos.findAll({
-            include: [{association: 'imagen'}],
+            include: [{association: 'imagen', association: 'categoria'}],
             raw: true,
             nest: true
         })        
@@ -92,21 +94,40 @@ const productController = {
 
     actualizar: function(req, res, next){
         console.log(req.body)
-        db.Productos.update({
-            nombre: req.body.producto,
-            precio: req.body.precio,
-            descripcion: req.body.descripcion,
-            categoria_id: req.body.categoria,
-            imagen_ruta: req.body.imagen,
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(function(){
-            res.redirect("/product/detalleProducto/" + req.params.id)
-        })
-        .catch(e => {console.log(e)})
+        if(req.files[0]){
+            db.Productos.update({
+                nombre: req.body.producto,
+                precio: req.body.precio,
+                descripcion: req.body.descripcion,
+                categoria_id: req.body.categoria,
+                imagen_ruta: req.files[0].filename,
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function(){
+                res.redirect("/product/detalleProducto/" + req.params.id)
+            })
+            .catch(e => {console.log(e)})
+        }
+        else{
+            db.Productos.update({
+                nombre: req.body.producto,
+                precio: req.body.precio,
+                descripcion: req.body.descripcion,
+                categoria_id: req.body.categoria,
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function(){
+                res.redirect("/product/detalleProducto/" + req.params.id)
+            })
+            .catch(e => {console.log(e)})
+        }
+        
         
        
         
@@ -128,6 +149,19 @@ const productController = {
         })
         res.redirect('/product/vistaproductos');
         
+    },
+
+    // Buscador
+
+    search: function(req, res, next){
+        var search = req.query.search
+        db.Productos.findAll({
+            where: { nombre: {[op.like]: '%'+ search +'%'} }
+        })
+        .then(productos=>{
+            res.render("vistaProductos", {search, productos, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems, admin: req.admin});                
+        })
+        .catch(e => {console.log(e)})
     }
 
        

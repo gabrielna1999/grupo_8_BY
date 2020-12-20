@@ -31,7 +31,7 @@
             </div> -->
 
             <div class="divizq">
-                <form class="formulario" action="/product/edicionProductos/<%=productos.id%>" method="POST">
+                <form class="formulario" action="/product/edicionProductos/<%=productos.id%>" method="POST" enctype="multipart/form-data">
 
                     <div class="contenedor">
         
@@ -69,11 +69,13 @@
                                 
                             <% } %>
                             </select> 
-                        </div>
+                        </div>                       
 
                         <div class="input-contenedor">
+                            <label>IMAGEN (Cargar un archivo para editar, dejar vacio para mantener la misma imagen)</label> 
+                            <img style="width: 100%;" src="/images/producto/<%= productos.imagen_ruta %>" alt="No hay imagen">                           
                             <!-- <i class="far fa-unlock-alt icon"></i> -->
-                            <input type="image" placeholder="IMAGEN" value="<%=productos.imagen_ruta%>" name="imagen">   
+                            <input type="file" placeholder="IMAGEN" name="imagen">   
                         </div>
 
                         <button type="submit">Editar</button>

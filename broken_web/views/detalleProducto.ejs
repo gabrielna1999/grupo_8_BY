@@ -34,7 +34,9 @@
 
             <article>
 
-                <div id="prod_name"><%= producto.nombre %></div>
+                
+                <!-- <div id="prod_categoria"><%= producto.categoria.nombre %></div> -->
+                <div id="prod_name"><%= producto.nombre %></div>                
                 <div id="prod_precio">$<%= producto.precio %></div>
                 
 
@@ -44,8 +46,8 @@
             <form action="/product/detalleProducto/<%= producto.id %>" method="POST">
                 <div id="talles">TALLE: <br>
                     <% producto.talles.forEach(talle => { %>
-                    <input name="talle" type="radio" value="<%= talle.id %>" id="radioTalle">
-                    <label id="talle-opcion" for="<%= talle.id %>"><%= talle.nombre %></label><br>
+                    <input name="talle" type="radio" value="<%= talle.id %>">
+                    <label id="talle-opcion" for="<%= talle.id %>"><%= talle.id %></label><br>
                     <% }) %>
                 </div> 
                 <br><br>
