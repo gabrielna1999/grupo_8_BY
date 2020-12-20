@@ -1,10 +1,21 @@
 var { check, validationResult, body} = require('express-validator');
+const { nextTick } = require('process');
 var db = require('../database/models');
 
 const detalleMiddleware = {
-    talle: [
-        check('talle').isLength({min:1}).withMessage("El email no es válido")
-    ],
+    SelecTalle: [
+        body("talle").custom(
+            (value) => {if(value == 0){
+                throw new Error('elejir talle');
 
-}
+            } else {
+                next();
+            }} 
+         )
+    ]
+                    
+    }
+        
+    
+
 module.exports = detalleMiddleware;

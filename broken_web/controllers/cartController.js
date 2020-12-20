@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const db = require('../database/models')
 
 const cartController = { 
@@ -43,66 +44,84 @@ const cartController = {
     },
 
     agregarProducto: function(req, res, next){
-        db.Compras.findOne({
-            where: { usuario_id: req.session.usuarioLogueado.id, finalizada: 0 },
-            include: {association: 'productos'}
-
-        })
-        .then(function(compraEncontrada){          
-            if(compraEncontrada != undefined){           
-                db.ComprasProductos.create({
-                    producto_id: req.params.id,
-                    compra_id: compraEncontrada.id,
-                    cantidad: req.body.cantidad,
-                    talle_id: req.body.talle
-                })  
-                
-                .then(function(compraProductoCreado){
-                    db.Productos.findOne({ where: {id: compraProductoCreado.producto_id}})
-                    .then(producto => {
-                        db.Compras.update({
-                            precio_total: compraEncontrada.precio_total + (producto.precio*req.body.cantidad)
-                        },{
-                            where: { id: compraEncontrada.id } 
+        var errors = validationResult(req);
+        if(errors.isEmpty()){
+            db.Compras.findOne({
+                where: { usuario_id: req.session.usuarioLogueado.id, finalizada: 0 },
+                include: {association: 'productos'}
+    
+            })
+            .then(function(compraEncontrada){          
+                if(compraEncontrada != undefined){           
+                    db.ComprasProductos.create({
+                        producto_id: req.params.id,
+                        compra_id: compraEncontrada.id,
+                        cantidad: req.body.cantidad,
+                        talle_id: req.body.talle
+                    })  
+                    
+                    .then(function(compraProductoCreado){
+                        db.Productos.findOne({ where: {id: compraProductoCreado.producto_id}})
+                        .then(producto => {
+                            db.Compras.update({
+                                precio_total: compraEncontrada.precio_total + (producto.precio*req.body.cantidad)
+                            },{
+                                where: { id: compraEncontrada.id } 
+                            })
                         })
+                        .catch( e => { console.log(e) } )
+                        
+                        
                     })
                     .catch( e => { console.log(e) } )
                     
-                    
-                })
-                .catch( e => { console.log(e) } )
-                
-                res.redirect('/product/vistaProductos') 
-            }
-            else{
-                db.Productos.findByPk(req.params.id)
-                .then(function(producto){
-                    var precioTotal = (producto.precio /* producto.cantidad */) 
-                    db.Compras.create({
-                    precio_total: precioTotal, 
-                    usuario_id: req.session.usuarioLogueado.id,
-                    finalizada: 0,
-                    precio_total: producto.precio*req.body.cantidad
-                }) 
-                .then(function(compraCreada){
-                    db.ComprasProductos.create({
-                    producto_id: req.params.id,
-                    compra_id: compraCreada.id,
-                    cantidad: req.body.cantidad,
-                    talle: req.body.talle
-                    })    
-                                   
                     res.redirect('/product/vistaProductos') 
-                })               
-                
-                .catch( e => { console.log(e) } )
+                }
+                else{
+                    db.Productos.findByPk(req.params.id)
+                    .then(function(producto){
+                        var precioTotal = (producto.precio /* producto.cantidad */) 
+                        db.Compras.create({
+                        precio_total: precioTotal, 
+                        usuario_id: req.session.usuarioLogueado.id,
+                        finalizada: 0,
+                        precio_total: producto.precio*req.body.cantidad
+                    }) 
+                    .then(function(compraCreada){
+                        db.ComprasProductos.create({
+                        producto_id: req.params.id,
+                        compra_id: compraCreada.id,
+                        cantidad: req.body.cantidad,
+                        talle_id: req.body.talle
+                        })    
+                                       
+                        res.redirect('/product/vistaProductos') 
+                    })               
                     
-                })
-                   
-            }
+                    .catch( e => { console.log(e) } )
+                        
+                    })
+                       
+                }
+    
+            }) 
+            .catch( e => { console.log(e) } )
 
-        }) 
-        .catch( e => { console.log(e) } )
+        }
+        else{
+            db.Productos.findByPk(req.params.id, {
+                include: { all: true }
+    
+            })        
+            .then(function(producto){          
+                res.render("detalleProducto", {producto, usuarioLogueado: req.session.usuarioLogueado, admin: req.admin, cantidadDeItems: req.session.cantidadDeItems});                
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+    
+        }
+      
         
         
     },

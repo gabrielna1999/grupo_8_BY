@@ -7,7 +7,7 @@ var {check, validationResult, body} = require('express-validator');
 var session = require('express-session');
 const usersMiddleware = require('./middlewares/usersMiddleware');
 const carritoMiddleware = require('./middlewares/carritoMiddleware');
-const detalleMiddleware = require('./middlewares/detalleMiddleware');
+
 
 
 var productRouter = require('./routes/product')
@@ -35,8 +35,7 @@ app.use(usersMiddleware.recordame);
 app.use(usersMiddleware.esAdmin);
 // Le paso al header la cantidad de productos que hay en el carrito
 app.use(carritoMiddleware.carritoHeader);
-// Chequeo de que selecciono un talle
-app.use(detalleMiddleware.talle);
+
 
 // RUTAS
 app.use('/product', productRouter);

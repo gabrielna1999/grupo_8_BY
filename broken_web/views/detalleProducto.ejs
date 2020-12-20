@@ -44,7 +44,7 @@
             <form action="/product/detalleProducto/<%= producto.id %>" method="POST">
                 <div id="talles">TALLE: <br>
                     <% producto.talles.forEach(talle => { %>
-                    <input name="talle" type="radio" value="<%= talle.id %>">
+                    <input name="talle" type="radio" value="<%= talle.id %>" id="radioTalle">
                     <label id="talle-opcion" for="<%= talle.id %>"><%= talle.nombre %></label><br>
                     <% }) %>
                 </div> 
@@ -57,6 +57,16 @@
                         <% } %>    
                     </select>
                 </div>
+                <% if(typeof errors != 'undefined'){ %>
+                    <ul style="padding-left: 0%;">
+                        <% for(let i = 0; i < errors.length; i++){ %>
+                            <li style="list-style: none; padding-left: 0; font-size: 12px; color: red;">
+                                <%= errors[i].msg %>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% } %>
+
                 <br>
 
                 <button id="agregar_talle" type="submit">AGREGAR</button>
