@@ -35,7 +35,7 @@ const usersMiddleware = {
             return db.Usuarios.findOne({
                 where: { email: value }
             })
-            .then(usuario => {
+            .then(usuario => {  
                 if(usuario){
                     return Promise.reject('Ya existe un usuario registrado con ese email')
                 }

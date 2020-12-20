@@ -5,6 +5,5 @@ const cartController = require("../controllers/cartController");
 
 //router.get('/carrito', cartController.vistaCarrito);
 //router.get("/vistaProductos", productController.vistaProductos); 
-router.post('/detalleProducto/:id', cartController.agregarProducto);
 
 module.exports = router;
