@@ -79,8 +79,8 @@ const usersController = {
             // res.redirect('/')
         }
         else{
-            return res.render("register", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
-            console.log(errors);
+            return res.render("register", { errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems })
+            
         }
 
         
@@ -95,7 +95,7 @@ const usersController = {
 
     // Ver perfil
     verPerfil: function(req,res,next){
-        res.render('perfil', { usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
+        res.render('perfil', { usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems })
         
 
     },
@@ -109,7 +109,7 @@ const usersController = {
 
     // Editar perfil
     editarPerfil: function(req,res,next){
-        res.render('editarPerfil', { usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeProductos })
+        res.render('editarPerfil', { usuarioLogueado: req.session.usuarioLogueado, cantidadDeItems: req.session.cantidadDeItems })
         
 
     },

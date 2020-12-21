@@ -93,7 +93,6 @@ const productController = {
     },
 
     actualizar: function(req, res, next){
-        console.log(req.body)
         if(req.files[0]){
             db.Productos.update({
                 nombre: req.body.producto,

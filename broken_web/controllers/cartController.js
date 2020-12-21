@@ -164,7 +164,6 @@ const cartController = {
                 finalizada: 1,
                 fecha_finalizacion: new Date()
             })
-            console.log(compra)
             res.render('compraFinalizada', {usuarioLogueado: req.session.usuarioLogueado, compra, cantidadDeItems: req.session.cantidadDeItems})
         })
         .catch( e => { console.log(e) } )

@@ -20,7 +20,7 @@ const usersMiddleware = require('../middlewares/usersMiddleware');
 const detalleMiddleware = require('../middlewares/detalleMiddleware');
 
 router.get('/detalleProducto/:id', productController.vistaDetalleProducto );
-router.post('/detalleProducto/:id', detalleMiddleware.SelecTalle ,usersMiddleware.esUsuario, cartController.agregarProducto );
+router.post('/detalleProducto/:id', detalleMiddleware.SelecTalle , usersMiddleware.esUsuario, cartController.agregarProducto );
 router.get('/carrito', usersMiddleware.esUsuario, cartController.vistaCarrito);
 router.get('/carrito/sumar/:id/:cantidad', usersMiddleware.esUsuario, cartController.sumar);
 router.get('/carrito/restar/:id/:cantidad', usersMiddleware.esUsuario, cartController.restar);

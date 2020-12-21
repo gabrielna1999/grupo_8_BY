@@ -8,9 +8,9 @@ router.post("/register", usersMiddleware.validacionRegister, usersMiddleware.est
 router.get("/login", usersMiddleware.esInvitado, usersController.login);
 router.post("/login", usersMiddleware.validacionLogin, usersController.processLogin);
 router.get("/cerrarSesion", usersController.cerrarSesion);
-router.get("/perfil", usersController.verPerfil);
+router.get("/perfil", usersMiddleware.esUsuario, usersController.verPerfil);
 router.post("/perfil", usersController.irAEditarPerfil);
-router.get("/editarPerfil/:id", usersController.editarPerfil);
+router.get("/editarPerfil/:id", usersMiddleware.esUsuario, usersController.editarPerfil);
 router.post("/editarPerfil/:id", usersMiddleware.validacionRegister, usersController.guardarCambios);
 
 module.exports = router;
