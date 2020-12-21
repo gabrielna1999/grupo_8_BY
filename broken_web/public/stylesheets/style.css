@@ -19,6 +19,7 @@ body{
 }
 
 main{
+  width: 100vw;
   margin-bottom: 7vw;
   display: flex;
   flex-direction: column;
@@ -26,7 +27,7 @@ main{
   justify-content: center;
 }
 
-/* Header */
+/* Header Mobile */
 
 #mobile_header{
   background-color: black;
@@ -36,14 +37,19 @@ main{
   justify-content: space-between;
   align-items: center;
   height: 10vw;
-  width: 98vw;
-  margin: 0px 2vw;
-  padding: 0px 0px;  
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;  
+  border-bottom: 1px solid white;
 }
 
 #menu_icon{
   width: 5vw;
-  padding: 0px 5px 0px 0px;
+  padding: 0px 5px 0px 5px;
+}
+
+#menu_icon:focus{
+  outline: none;
 }
 
 #menu_logo{
@@ -52,7 +58,77 @@ main{
 
 #menu_user{
   width: 5vw;
+  margin-right: 5px;
 }
+
+#menu_user:focus{
+  outline: none;
+}
+
+/* MENU DROPDOWN */
+
+.dropbtn {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid rgb(92, 92, 92);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 10px;
+}
+
+.show {display: block;}
+
+/* USER DROPDOWN */
+
+.userDropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.userDropdown-content {
+  display: none;
+  position: absolute;
+  right: 5px;
+  background-color: black;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid rgb(92, 92, 92);
+  z-index: 1;
+}
+
+.userDropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 10px;
+}
+
+.userShow {display: block;}
 
 /* Header Web */
 
@@ -138,6 +214,7 @@ input[type="text"]{
 #carrito{
   width: 41vw;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   color: white;
@@ -185,6 +262,53 @@ input[type="text"]{
   font-size: 0.8em;
 }
 
+
+/* Carrusel */
+
+.carrusel{
+  top: 600px;
+}
+
+#carousel{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#slideImg{
+  width: 100vw;
+}
+
+.carousel_button{
+
+  position: absolute;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;   
+  background-color: black;
+  text-align: center;
+  text-justify: inherit;
+  opacity: 0.60;
+  color: white;
+  font-weight: bolder;
+  font-size: 2.5vw;
+  border-radius: 70px;
+  border: none;
+}
+
+.carousel_button:focus{
+  outline: none;
+}
+
+#carousel_left{
+  left: 20px;
+
+}
+
+#carousel_right{
+  right: 20px;
+  
+}
+
 /* Main */
 
 #home_img{
@@ -207,7 +331,7 @@ input[type="text"]{
 }
 
 #quienes-somos-main{
-  margin-top: 150px;
+  margin-top: 0px;
   width: 100vw;
   text-align: center;
   align-self: center;
@@ -246,6 +370,15 @@ body section{
   font-size: calc(1em + 3vw);
   text-align: center;
   margin: 50px 0px 30px 0px;
+}
+
+#destacados-comoComprar{
+  display: block;
+  width: 100vw;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: calc(1em + 2vw);
+  text-align: center;
+  margin: 70px 0px 30px 0px;
 }
 
 .producto{
@@ -364,6 +497,8 @@ footer p{
 
   }
 
+  
+
   #mobile_header{
       display: none;
   }
@@ -421,16 +556,40 @@ footer p{
       display: flex;
   }
 
+  #buscar{
+    width: 90%;
+    margin: 12px 12px;
+    padding: 2px
+  }
+
+  #buscar i{
+    font-size: 12px;
+    padding: 0px 5px; 
+  }
+
+  
+  input[type="text"]{
+    font-size: 10px;
+    width: 100%;
+    padding: 0px;
+    border: none;
+    text-indent: 10px;
+}
+
+  #carrito_icon{
+    font-size: 12px;
+  }
+
   #quienes-somos-main{
     margin: 0px;
     justify-self: flex-start;
   }
 
   #destacados{
-    margin-top: 0px;
+    margin-top: 30px;
   }
 
-  #carrusel{
+  #carousel{
     display: none;
   }
 
